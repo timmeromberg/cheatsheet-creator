@@ -1,6 +1,17 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { createEmotionSsrAdvancedApproach } from "tss-react/next/pagesDir";
+import GlobalStylesComponent from "../components/GlobalStylesComponent";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
+  createEmotionSsrAdvancedApproach({ key: "css" });
+
+export { augmentDocumentWithEmotionCache };
+
+const CustomApp = ({ Component, pageProps }) => {
+  return (
+    <GlobalStylesComponent>
+      <Component {...pageProps} />
+    </GlobalStylesComponent>
+  );
+};
+
+export default withAppEmotionCache(CustomApp);
