@@ -5,7 +5,7 @@ import Filler from "./Filler";
 import { Cheatsheet, KeyShortcuts } from "../domain/Cheatsheet";
 
 interface KeyboardRowProps {
-  openEditShortcutModal: (keyShortcuts: KeyShortcuts) => any;
+  openEditShortcutModal: (label: string, keyShortcuts: KeyShortcuts) => any;
   layoutRow: LayoutRow;
   keyboardShortcuts: Cheatsheet;
 }
@@ -37,7 +37,7 @@ const KeyboardRow = ({
   );
 };
 
-const useStyles = makeStyles<>()((theme) => ({
+const useStyles = makeStyles<>()(() => ({
   keyboardRow: {
     display: "flex",
     flexDirection: "row",

@@ -5,7 +5,7 @@ import { LayoutKey } from "../domain/KeyboardLayout";
 import { createEmptyKeyShortcuts, KeyShortcuts } from "../domain/Cheatsheet";
 
 export interface KeyProps {
-  openEditShortcutModal: (keyShortcuts: KeyShortcuts) => never;
+  openEditShortcutModal: (label: string, keyShortcuts: KeyShortcuts) => never;
   layoutKey: LayoutKey;
   keyShortcuts?: KeyShortcuts;
 }
@@ -24,6 +24,7 @@ const Key = ({
     <div
       onClick={() =>
         openEditShortcutModal(
+          layoutKey.label,
           keyShortcuts ? keyShortcuts : createEmptyKeyShortcuts(layoutKey.id)
         )
       }

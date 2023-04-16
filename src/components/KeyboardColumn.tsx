@@ -3,10 +3,9 @@ import { LayoutColumn } from "../domain/KeyboardLayout";
 import KeyboardRow from "./KeyboardRow";
 import { Cheatsheet, KeyShortcuts } from "../domain/Cheatsheet";
 import { ColorHex } from "../styles/colors";
-import { base } from "../styles/base";
 
 interface KeyboardColumnProps {
-  openEditShortcutModal: (keyShortcuts: KeyShortcuts) => any;
+  openEditShortcutModal: (label: string, keyShortcuts: KeyShortcuts) => any;
   layoutColumn: LayoutColumn;
   keyboardShortcuts: Cheatsheet;
 }

@@ -6,11 +6,16 @@ import ModalButtons from "./ModalButtons";
 import ModalForm from "./ModalForm";
 import ToolsModal from "./ToolsModal";
 
+export interface EditShortcutModalData {
+  label: string;
+  keyShortcuts: KeyShortcuts;
+}
+
 interface EditShortcutModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
   onSave: (keyShortcuts: KeyShortcuts) => void;
-  data: KeyShortcuts;
+  data: EditShortcutModalData;
 }
 
 const EditKeyShortcutsModal = ({
@@ -19,24 +24,24 @@ const EditKeyShortcutsModal = ({
   onSave,
   data,
 }: EditShortcutModalProps): JSX.Element => {
-  const [keyOnly, setKeyOnly] = useState(data.keyOnly);
-  const [alt, setAlt] = useState(data.alt);
-  const [ctrl, setCtrl] = useState(data.ctrl);
-  const [ctrlShift, setCtrlShift] = useState(data.ctrlShift);
-  const [shift, setShift] = useState(data.shift);
+  const [keyOnly, setKeyOnly] = useState(data.keyShortcuts.keyOnly);
+  const [alt, setAlt] = useState(data.keyShortcuts.alt);
+  const [ctrl, setCtrl] = useState(data.keyShortcuts.ctrl);
+  const [ctrlShift, setCtrlShift] = useState(data.keyShortcuts.ctrlShift);
+  const [shift, setShift] = useState(data.keyShortcuts.shift);
 
   return (
     <ToolsModal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      header={"Editing shortcuts for " + data.id}
+      header={"Editing shortcuts for " + data.label}
     >
       <ModalForm>
         <EditShortcutModalInput
           label={"Key only"}
           value={keyOnly}
           setValue={setKeyOnly}
-          maxLength={43 - data.id.length}
+          maxLength={43 - data.keyShortcuts.id.length}
         />
         <EditShortcutModalInput
           label={"Shift"}
@@ -69,7 +74,7 @@ const EditKeyShortcutsModal = ({
           label={"Save"}
           onClick={() =>
             onSave({
-              id: data.id,
+              id: data.keyShortcuts.id,
               keyOnly: keyOnly,
               alt: alt,
               ctrl: ctrl,

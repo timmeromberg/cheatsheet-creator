@@ -2,7 +2,9 @@ import Keyboard from "../components/Keyboard";
 import { Cheatsheet, KeyShortcuts } from "../domain/Cheatsheet";
 import { makeStyles } from "../styles/theme";
 import { base } from "../styles/base";
-import EditKeyShortcutsModal from "../components/EditKeyShortcutsModal";
+import EditKeyShortcutsModal, {
+  EditShortcutModalData,
+} from "../components/EditKeyShortcutsModal";
 import React, { useEffect, useRef, useState } from "react";
 import exportHtmlAsImage from "../application/exportHtmlAsImage";
 import { KeyboardLayout } from "../domain/KeyboardLayout";
@@ -20,7 +22,7 @@ const CheatsheetPage: NextPage = () => {
   const [isEditKeyShortCutsModalOpen, setIsEditKeyShortCutsModalOpen] =
     useState(false);
   const [editKeyShortcutsModalData, setEditKeyShortcutsModalData] =
-    useState<KeyShortcuts>(null);
+    useState<EditShortcutModalData>(null);
 
   const [isEditDescriptionModalOpen, setIsEditDescriptionModalOpen] =
     useState(false);
@@ -40,9 +42,12 @@ const CheatsheetPage: NextPage = () => {
     });
   }, []);
 
-  const handleOpenEditShortcutModal = (keyShortcuts: KeyShortcuts) => {
+  const handleOpenEditShortcutModal = (
+    label: string,
+    keyShortcuts: KeyShortcuts
+  ) => {
     setIsEditKeyShortCutsModalOpen(true);
-    setEditKeyShortcutsModalData(keyShortcuts); // Replace this with the data you want to pass to the modal
+    setEditKeyShortcutsModalData({ label, keyShortcuts }); // Replace this with the data you want to pass to the modal
   };
 
   const onSaveKeyShortcuts = (updatedKeyShortcut: KeyShortcuts) => {
@@ -105,8 +110,8 @@ const CheatsheetPage: NextPage = () => {
 
           <div ref={componentRef} className={cx(classes.cheatsheetKeyboard)}>
             <Keyboard
-              openEditShortcutModal={(keyShortcuts: KeyShortcuts) =>
-                handleOpenEditShortcutModal(keyShortcuts)
+              openEditShortcutModal={(label, keyShortcuts: KeyShortcuts) =>
+                handleOpenEditShortcutModal(label, keyShortcuts)
               }
               keyboardLayout={keyboardLayout}
               keyboardShortcuts={cheatsheet}
