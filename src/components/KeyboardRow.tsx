@@ -25,7 +25,7 @@ const KeyboardRow = ({
             key={index}
             openEditShortcutModal={openEditShortcutModal}
             keyShortcuts={keyboardShortcuts.keyShortcuts.find(
-              (shortcut) => shortcut.id === (layoutItem as LayoutKey).label
+              (shortcut) => shortcut.id === (layoutItem as LayoutKey).id
             )}
             layoutKey={layoutItem}
           />

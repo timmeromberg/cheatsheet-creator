@@ -1,110 +1,208 @@
 import { KeyboardLayout } from "../domain/KeyboardLayout";
 
-export default class ApiLayer {
+export default class {
   fetchKeyboardLayout = (): KeyboardLayout => {
     return {
-      layoutRows: [
+      layoutColumns: [
         {
-          layoutKeys: [
-            { label: "Esc", grow: 2 },
-            {},
-            { label: "F1" },
-            { label: "F2" },
-            { label: "F3" },
-            { label: "F4" },
-            {},
-            { label: "F5" },
-            { label: "F6" },
-            { label: "F7" },
-            { label: "F8" },
-            {},
-            { label: "F9" },
-            { label: "F10" },
-            { label: "F11" },
-            { label: "F12" },
+          layoutRows: [
+            {
+              layoutKeys: [
+                { id: "Esc", label: "Esc", grow: 2 },
+                {},
+                { id: "F1", label: "F1" },
+                { id: "F2", label: "F2" },
+                { id: "F3", label: "F3" },
+                { id: "F4", label: "F4" },
+                {},
+                { id: "F5", label: "F5" },
+                { id: "F6", label: "F6" },
+                { id: "F7", label: "F7" },
+                { id: "F8", label: "F8" },
+                {},
+                { id: "F9", label: "F9" },
+                { id: "F10", label: "F10" },
+                { id: "F11", label: "F11" },
+                { id: "F12", label: "F12" },
+              ],
+            },
+            {
+              layoutKeys: [{ grow: 1 }],
+            },
+            {
+              layoutKeys: [
+                { id: "~", label: "~" },
+                { id: "1", label: "1" },
+                { id: "2", label: "2" },
+                { id: "3", label: "3" },
+                { id: "4", label: "4" },
+                { id: "5", label: "5" },
+                { id: "6", label: "6" },
+                { id: "7", label: "7" },
+                { id: "8", label: "8" },
+                { id: "9", label: "9" },
+                { id: "0", label: "0" },
+                { id: "-", label: "-" },
+                { id: "+", label: "+" },
+                { id: "BkS", label: "BkS", grow: 2 },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Tab", label: "Tab", grow: 2 },
+                { id: "Q", label: "Q" },
+                { id: "W", label: "W" },
+                { id: "E", label: "E" },
+                { id: "R", label: "R" },
+                { id: "T", label: "T" },
+                { id: "Y", label: "Y" },
+                { id: "U", label: "U" },
+                { id: "I", label: "I" },
+                { id: "O", label: "O" },
+                { id: "P", label: "P" },
+                { id: "[", label: "[" },
+                { id: "]", label: "]" },
+                { id: "\\", label: "\\", grow: 2 },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Caps", label: "Caps", grow: 2 },
+                { id: "A", label: "A" },
+                { id: "S", label: "S" },
+                { id: "D", label: "D" },
+                { id: "F", label: "F" },
+                { id: "G", label: "G" },
+                { id: "H", label: "H" },
+                { id: "J", label: "J" },
+                { id: "K", label: "K" },
+                { id: "L", label: "L" },
+                { id: ";", label: ";" },
+                { id: "'", label: "'" },
+                { id: "Enter", label: "Enter", grow: 2 },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Left_Shift", label: "Shift", grow: 2 },
+                { id: "Z", label: "Z" },
+                { id: "X", label: "X" },
+                { id: "C", label: "C" },
+                { id: "V", label: "V" },
+                { id: "B", label: "B" },
+                { id: "N", label: "N" },
+                { id: "M", label: "M" },
+                { id: "<", label: "<" },
+                { id: ">", label: ">" },
+                { id: "?/", label: "?/" },
+                { id: "Right_Shift", label: "Shift", grow: 2 },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Left_Ctrl", label: "Ctrl", grow: 2 },
+                { id: "Left_Opt", label: "" },
+                { id: "Left_Alt", label: "Alt", grow: 2 },
+                { id: "Spacebar", label: "Spacebar", grow: 20 },
+                { id: "Right_Alt", label: "Alt", grow: 2 },
+                { id: "Right_Opt", label: "" },
+                { id: "RightCtrl", label: "Ctrl", grow: 2 },
+              ],
+            },
           ],
         },
         {
-          layoutKeys: [{ grow: 1 }],
-        },
-        {
-          layoutKeys: [
-            { label: "~" },
-            { label: "1" },
-            { label: "2" },
-            { label: "3" },
-            { label: "4" },
-            { label: "5" },
-            { label: "6" },
-            { label: "7" },
-            { label: "8" },
-            { label: "9" },
-            { label: "0" },
-            { label: "-" },
-            { label: "+" },
-            { label: "BkS", grow: 2 },
+          layoutRows: [
+            {
+              layoutKeys: [
+                { id: "Prt", label: "Prt" },
+                { id: "Scr", label: "Scr" },
+                { id: "Ps", label: "Ps" },
+              ],
+            },
+            {
+              layoutKeys: [{}],
+            },
+            {
+              layoutKeys: [
+                { id: "Ins", label: "Ins" },
+                { id: "Home", label: "Home" },
+                { id: "Pgu", label: "Pgu" },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Del", label: "Del" },
+                { id: "End", label: "End" },
+                { id: "Pgd", label: "Pgd" },
+              ],
+            },
+            {
+              layoutKeys: [{ size: 6 }],
+            },
+            {
+              layoutKeys: [
+                { size: 2 },
+                { id: "ArrowKeys_Up", label: "Up" },
+                { size: 2 },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "ArrowKeys_Left", label: "Lft" },
+                { id: "ArrowKeys_Down", label: "Dwn" },
+                { id: "ArrowKeys_Right", label: "Rgt" },
+              ],
+            },
           ],
         },
         {
-          layoutKeys: [
-            { label: "Tab", grow: 2 },
-            { label: "Q" },
-            { label: "W" },
-            { label: "E" },
-            { label: "R" },
-            { label: "T" },
-            { label: "Y" },
-            { label: "U" },
-            { label: "I" },
-            { label: "O" },
-            { label: "P" },
-            { label: "[" },
-            { label: "]" },
-            { label: "\\", grow: 2 },
-          ],
-        },
-        {
-          layoutKeys: [
-            { label: "Caps", grow: 2 },
-            { label: "A" },
-            { label: "S" },
-            { label: "D" },
-            { label: "F" },
-            { label: "G" },
-            { label: "H" },
-            { label: "J" },
-            { label: "K" },
-            { label: "L" },
-            { label: ";" },
-            { label: "'" },
-            { label: "Enter", grow: 2 },
-          ],
-        },
-        {
-          layoutKeys: [
-            { label: "Shift", grow: 2 },
-            { label: "Z" },
-            { label: "X" },
-            { label: "C" },
-            { label: "V" },
-            { label: "B" },
-            { label: "N" },
-            { label: "M" },
-            { label: "<" },
-            { label: ">" },
-            { label: "?/" },
-            { label: "Shift", grow: 2 },
-          ],
-        },
-        {
-          layoutKeys: [
-            { label: "Ctrl", grow: 2 },
-            { label: "" },
-            { label: "Alt", grow: 2 },
-            { label: "Spacebar", grow: 20 },
-            { label: "Alt gr", grow: 2 },
-            { label: "" },
-            { label: "Ctrl", grow: 2 },
+          layoutRows: [
+            {
+              layoutKeys: [{ size: 9 }],
+            },
+            {
+              layoutKeys: [{}],
+            },
+            {
+              layoutKeys: [
+                { id: "Num", label: "Num" },
+                { id: "/", label: "/" },
+                { id: "*", label: "*" },
+                { id: "Numpad_-", label: "-" },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Numpad_7", label: "7" },
+                { id: "Numpad_8", label: "8" },
+                { id: "Numpad_9", label: "9" },
+                { id: "Numpad_+", label: "+" },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Numpad_4", label: "4" },
+                { id: "Numpad_5", label: "5" },
+                { id: "Numpad_6", label: "6" },
+                { id: "Numpad_+", label: "+" },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Numpad_1", label: "1" },
+                { id: "Numpad_2", label: "2" },
+                { id: "Numpad_3", label: "3" },
+                { id: "Numpad_Ent", label: "Ent" },
+              ],
+            },
+            {
+              layoutKeys: [
+                { id: "Numpad_0", label: "0", size: 4 },
+                { id: "Numpad_Del", label: "Del" },
+                { id: "Numpad_Ent", label: "Ent" },
+              ],
+            },
           ],
         },
       ],

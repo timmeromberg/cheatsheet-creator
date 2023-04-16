@@ -9,6 +9,7 @@ export interface FillerProps {
 const Filler = ({ layoutFiller }: FillerProps): JSX.Element => {
   const { classes, cx } = useStyles({
     stretch: layoutFiller.grow,
+    size: layoutFiller.size,
   });
   return <div className={cx(classes.key)} />;
 };
@@ -16,10 +17,10 @@ const Filler = ({ layoutFiller }: FillerProps): JSX.Element => {
 const useStyles = makeStyles<{
   size: boolean;
   stretch?: boolean;
-}>()((theme, { grow }) => ({
+}>()((theme, { grow, size }) => ({
   key: {
-    height: base(1),
-    width: base(1),
+    height: base(size > 1 ? 2 : 1),
+    width: base(size ? size : 1),
     flexGrow: grow,
   },
 }));

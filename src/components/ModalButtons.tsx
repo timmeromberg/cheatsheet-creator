@@ -1,5 +1,5 @@
 import React from "react";
-import { getStyles, makeStyles } from "../styles/theme";
+import { makeStyles } from "../styles/theme";
 import { base } from "../styles/base";
 import Button from "./Button";
 

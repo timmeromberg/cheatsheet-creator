@@ -6,6 +6,7 @@ const KEYBOARD_SHORTCUTS_CHEATSHEET_IMAGE_FILE_NAME =
 const exportComponentAsImage = async (componentRef) => {
   try {
     const canvas = await html2canvas(componentRef.current as HTMLDivElement);
+
     const imgData = canvas.toDataURL("image/png");
     const link = document.createElement("a");
     link.href = imgData;

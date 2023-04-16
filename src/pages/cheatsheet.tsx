@@ -169,7 +169,7 @@ const useStyles = makeStyles<>()(() => ({
     color: ColorHex.AMBER,
   },
   cheatsheetKeyboard: {
-    width: base(33),
+    width: base(47),
     marginLeft: "auto",
     marginRight: "auto",
     padding: base(0.5),

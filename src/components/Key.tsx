@@ -17,13 +17,14 @@ const Key = ({
 }: KeyProps): JSX.Element => {
   const { classes, cx } = useStyles({
     grow: layoutKey.grow,
+    size: layoutKey.size,
   });
 
   return (
     <div
       onClick={() =>
         openEditShortcutModal(
-          keyShortcuts ? keyShortcuts : createEmptyKeyShortcuts(layoutKey.label)
+          keyShortcuts ? keyShortcuts : createEmptyKeyShortcuts(layoutKey.id)
         )
       }
       className={cx(classes.key)}
@@ -68,14 +69,14 @@ const Key = ({
 
 const useStyles = makeStyles<{
   grow?: boolean;
-}>()((theme, { grow }) => ({
+}>()((theme, { grow, size }) => ({
   key: {
     height: base(2),
-    width: base(2),
-    margin: base(0.075),
+    width: base(size ? size : 2),
     flexGrow: grow,
     backgroundColor: ColorHex.DARK_BLUE,
     color: ColorHex.GRAY,
+    border: "2px solid " + ColorHex.MIDNIGHT_BLUE,
     "&:hover": {
       backgroundColor: ColorHex.AMBER,
       color: ColorHex.WHITE,
