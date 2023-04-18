@@ -1,19 +1,19 @@
-import { makeStyles } from "../styles/theme";
-import Key from "./Key";
-import { isLayoutKey, LayoutKey, LayoutRow } from "../domain/KeyboardLayout";
-import Filler from "./Filler";
-import { Cheatsheet, KeyShortcuts } from "../domain/Cheatsheet";
+import { makeStyles } from "../../styles/theme";
+import Key from "../atoms/Key";
+import { isLayoutKey, LayoutKey, LayoutRow } from "../../domain/KeyboardLayout";
+import Filler from "../atoms/Filler";
+import { Cheatsheet, KeyShortcuts } from "../../domain/Cheatsheet";
 
 interface KeyboardRowProps {
-  openEditShortcutModal: (label: string, keyShortcuts: KeyShortcuts) => any;
   layoutRow: LayoutRow;
-  keyboardShortcuts: Cheatsheet;
+  cheatsheet: Cheatsheet;
+  saveCheatsheet: (cheatsheet: Cheatsheet) => void;
 }
 
 const KeyboardRow = ({
-  openEditShortcutModal,
   layoutRow,
-  keyboardShortcuts,
+  cheatsheet,
+  saveCheatsheet,
 }: KeyboardRowProps): JSX.Element => {
   const { classes, cx } = useStyles();
 
@@ -23,11 +23,12 @@ const KeyboardRow = ({
         isLayoutKey(layoutItem) ? (
           <Key
             key={index}
-            openEditShortcutModal={openEditShortcutModal}
-            keyShortcuts={keyboardShortcuts.keyShortcuts.find(
+            keyShortcuts={cheatsheet.keyShortcuts.find(
               (shortcut) => shortcut.id === (layoutItem as LayoutKey).id
             )}
             layoutKey={layoutItem}
+            cheatsheet={cheatsheet}
+            saveCheatsheet={saveCheatsheet}
           />
         ) : (
           <Filler key={index} layoutFiller={layoutItem} />

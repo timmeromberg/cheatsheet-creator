@@ -1,7 +1,7 @@
 import React from "react";
-import { makeStyles } from "../styles/theme";
-import { base } from "../styles/base";
-import Button from "./Button";
+import { makeStyles } from "../../styles/theme";
+import { base } from "../../styles/base";
+import Button from "../atoms/Button";
 
 interface ModalButtonsProps {
   children: Button[];
@@ -17,6 +17,7 @@ const useStyles = makeStyles()(() => ({
     display: "flex",
     flexDirection: "row",
     gap: base(1),
+    justifyContent: "center",
   },
 }));
 

@@ -1,19 +1,19 @@
-import { makeStyles } from "../styles/theme";
-import { LayoutColumn } from "../domain/KeyboardLayout";
+import { makeStyles } from "../../styles/theme";
+import { LayoutColumn } from "../../domain/KeyboardLayout";
 import KeyboardRow from "./KeyboardRow";
-import { Cheatsheet, KeyShortcuts } from "../domain/Cheatsheet";
-import { ColorHex } from "../styles/colors";
+import { Cheatsheet } from "../../domain/Cheatsheet";
+import { ColorHex } from "../../styles/colors";
 
 interface KeyboardColumnProps {
-  openEditShortcutModal: (label: string, keyShortcuts: KeyShortcuts) => any;
   layoutColumn: LayoutColumn;
-  keyboardShortcuts: Cheatsheet;
+  cheatsheet: Cheatsheet;
+  saveCheatsheet: (cheatsheet: Cheatsheet) => void;
 }
 
 const KeyboardColumn = ({
-  openEditShortcutModal,
   layoutColumn,
-  keyboardShortcuts,
+  cheatsheet,
+  saveCheatsheet,
 }: KeyboardColumnProps): JSX.Element => {
   const { classes, cx } = useStyles();
 
@@ -22,9 +22,9 @@ const KeyboardColumn = ({
       {layoutColumn.layoutRows.map((layoutRow, index) => (
         <KeyboardRow
           key={index}
-          openEditShortcutModal={openEditShortcutModal}
-          keyboardShortcuts={keyboardShortcuts}
+          cheatsheet={cheatsheet}
           layoutRow={layoutRow}
+          saveCheatsheet={saveCheatsheet}
         />
       ))}
     </div>
@@ -33,7 +33,7 @@ const KeyboardColumn = ({
 
 const useStyles = makeStyles<>()(() => ({
   keyboardColumn: {
-    backgroundColor: ColorHex.MIDNIGHT_BLUE,
+    backgroundColor: ColorHex.WHITE,
     display: "flex",
     flexDirection: "column",
   },

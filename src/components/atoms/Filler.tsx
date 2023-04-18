@@ -1,6 +1,6 @@
-import { makeStyles } from "../styles/theme";
-import { base } from "../styles/base";
-import { LayoutFiller } from "../domain/KeyboardLayout";
+import { makeStyles } from "../../styles/theme";
+import { base } from "../../styles/base";
+import { LayoutFiller } from "../../domain/KeyboardLayout";
 
 export interface FillerProps {
   layoutFiller: LayoutFiller;

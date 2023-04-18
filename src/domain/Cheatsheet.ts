@@ -1,15 +1,24 @@
 export interface Cheatsheet {
   keyShortcuts: KeyShortcuts[];
-  description: string;
+  description: CheatsheetDescription;
+}
+
+export interface CheatsheetDescription {
+  shift: string;
+  ctrl: string;
+  alt: string;
+  notes: string;
 }
 
 export interface KeyShortcuts {
   id: string;
   keyOnly: string;
   shift: string;
+  shiftCtrl: string;
   ctrl: string;
-  ctrlShift: string;
+  ctrlAlt: string;
   alt: string;
+  altShift: string;
 }
 
 export const createEmptyKeyShortcuts = (id: string): KeyShortcuts => {
@@ -17,8 +26,10 @@ export const createEmptyKeyShortcuts = (id: string): KeyShortcuts => {
     id: id,
     keyOnly: "",
     shift: "",
+    shiftCtrl: "",
     ctrl: "",
-    ctrlShift: "",
+    ctrlAlt: "",
     alt: "",
+    altShift: "",
   };
 };

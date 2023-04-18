@@ -3,9 +3,14 @@ import { m, mobileL } from "./queries";
 
 export const bodyFontSize = base(0.62);
 
+export enum FontWeight {
+  LIGHT = 300,
+  BOLD = 700,
+}
+
 const Lato = {
   fontFamily: "Lato, sans-serif",
-  fontWeight: 700,
+  fontWeight: FontWeight.LIGHT,
   fontStyle: "normal",
 };
 
@@ -33,14 +38,14 @@ export const h3 = {
   ...Lato,
   fontSize: base(1.1),
   lineHeight: base(1.2),
-  fontWeight: 700,
+  fontWeight: FontWeight.BOLD,
 };
 
 export const h4 = {
   ...Lato,
   fontSize: base(0.7),
   lineHeight: base(0.9),
-  fontWeight: 500,
+  fontWeight: FontWeight.BOLD,
   [m]: {
     fontSize: base(0.7),
     lineHeight: base(1.0),
@@ -49,5 +54,5 @@ export const h4 = {
 
 export const body = {
   fontSize: bodyFontSize,
-  lineHeight: base(1),
+  lineHeight: base(0.75),
 };

@@ -1,6 +1,6 @@
-export const htmlFontSizePixels = 20;
+export const htmlFontSizePixels = 22;
 
-export const baselinePixels = 40;
+export const baselinePixels = 36;
 
 export const base = (multiplier = 1): string =>
   `${(baselinePixels / htmlFontSizePixels) * multiplier}rem`;
