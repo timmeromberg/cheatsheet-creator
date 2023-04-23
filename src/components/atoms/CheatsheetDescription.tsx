@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Cheatsheet, CheatsheetDescription } from "../../domain/Cheatsheet";
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
-import EditDescriptionModal from "../organisms/EditDescriptionModal";
+import EditDescriptionModal from "../organisms/EditCheatsheetDescriptionModal";
 import { FontWeight } from "../../styles/fontType";
 import { base } from "../../styles/base";
+import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 
 interface CheatsheetDescriptionProps {
   cheatsheet: Cheatsheet;
@@ -16,8 +17,7 @@ const CheatsheetDescription = ({
   saveCheatsheet,
 }: CheatsheetDescriptionProps) => {
   const { classes, cx } = useStyles();
-  const [isEditDescriptionModalOpen, setIsEditDescriptionModalOpen] =
-    useState(false);
+  const { openModal, closeModal } = useModalContext();
 
   const onSaveDescription = (description: CheatsheetDescription) => {
     if (!cheatsheet) return;
@@ -27,14 +27,20 @@ const CheatsheetDescription = ({
       description: description,
     };
     saveCheatsheet(newCheatsheet);
-    setIsEditDescriptionModalOpen(false);
+    closeModal(ModalKey.EDIT_CHEATSHEET_DESCRIPTION_MODAL);
   };
 
   const description = cheatsheet.description;
   return (
     <>
       <div
-        onClick={() => setIsEditDescriptionModalOpen(true)}
+        onClick={() =>
+          openModal(
+            ModalKey.EDIT_CHEATSHEET_DESCRIPTION_MODAL,
+            cheatsheet.description,
+            onSaveDescription
+          )
+        }
         className={cx(classes.cheatsheetDescription)}
       >
         <p>
@@ -60,15 +66,6 @@ const CheatsheetDescription = ({
           {description.notes ? description.notes : ""}
         </p>
       </div>
-
-      {isEditDescriptionModalOpen && cheatsheet && (
-        <EditDescriptionModal
-          isOpen={isEditDescriptionModalOpen}
-          onRequestClose={() => setIsEditDescriptionModalOpen(false)}
-          onSave={onSaveDescription}
-          data={cheatsheet.description}
-        />
-      )}
     </>
   );
 };

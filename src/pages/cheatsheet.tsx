@@ -1,10 +1,7 @@
 import Keyboard from "../components/organisms/Keyboard";
-import { Cheatsheet, KeyShortcuts } from "../domain/Cheatsheet";
+import { Cheatsheet } from "../domain/Cheatsheet";
 import { makeStyles } from "../styles/theme";
 import { base } from "../styles/base";
-import EditKeyShortcutsModal, {
-  EditShortcutModalData,
-} from "../components/organisms/EditKeyShortcutsModal";
 import React, { useEffect, useRef, useState } from "react";
 import { KeyboardLayout } from "../domain/KeyboardLayout";
 import { NextPage } from "next";
@@ -75,7 +72,11 @@ const CheatsheetPage: NextPage = () => {
             </div>
           </div>
 
-          <CheatsheetButtons downloadAsImageRef={componentRef} />
+          <CheatsheetButtons
+            cheatsheet={cheatsheet}
+            downloadAsImageRef={componentRef}
+            onSaveCheatsheet={saveCheatsheet}
+          />
         </div>
       )}
     </>
@@ -88,12 +89,14 @@ const useStyles = makeStyles<>()(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
   },
   cheatsheetKeyboard: {
-    width: base(47),
-    padding: base(1),
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: "100%",
+    paddingLeft: base(0.5),
+    paddingRight: base(0.5),
+    paddingTop: base(1),
+    paddingBottom: base(0.5),
     backgroundColor: ColorHex.WHITE,
   },
   cheatsheetButtonsLogo: {

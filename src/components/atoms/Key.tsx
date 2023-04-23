@@ -8,8 +8,8 @@ import {
   KeyShortcuts,
 } from "../../domain/Cheatsheet";
 import KeyShortcut, { KeyShortcutLabel } from "./KeyShortcut";
-import EditKeyShortcutsModal from "../organisms/EditKeyShortcutsModal";
-import React, { useState } from "react";
+import React from "react";
+import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 
 export interface KeyProps {
   layoutKey: LayoutKey;
@@ -24,20 +24,70 @@ const Key = ({
   cheatsheet,
   saveCheatsheet,
 }: KeyProps): JSX.Element => {
-  const [isEditKeyShortCutsModalOpen, setIsEditKeyShortCutsModalOpen] =
-    useState(false);
+  const { openModal, closeModal } = useModalContext();
 
   const { classes, cx } = useStyles({
     grow: layoutKey.grow,
     size: layoutKey.size,
   });
 
+  const key = ModalKey.EDIT_SHORTCUTS_MODAL;
+
+  const onSaveKeyShortcuts = (
+    id: string,
+    keyOnly: string,
+    shift: string,
+    shiftCtrl: string,
+    ctrl: string,
+    ctrlAlt: string,
+    alt: string,
+    altShift: string
+  ) => {
+    const updatedKeyShortcut: KeyShortcuts = {
+      id: id,
+      keyOnly: keyOnly,
+      shift: shift,
+      shiftCtrl: shiftCtrl,
+      ctrl: ctrl,
+      ctrlAlt: ctrlAlt,
+      alt: alt,
+      altShift: altShift,
+    };
+
+    // Find the index of the KeyShortcuts object to update
+    const index = cheatsheet.keyShortcuts.findIndex(
+      (shortcut) => shortcut.id === keyShortcuts?.id
+    );
+    const keyShortcutsList = [...cheatsheet.keyShortcuts];
+
+    if (index >= 0) {
+      keyShortcutsList[index] = { ...updatedKeyShortcut };
+    } else {
+      keyShortcutsList.push({ ...updatedKeyShortcut });
+    }
+
+    const newCheatsheet: Cheatsheet = {
+      keyShortcuts: keyShortcutsList,
+      description: cheatsheet.description,
+    };
+
+    closeModal(key);
+    saveCheatsheet(newCheatsheet);
+  };
+
   const hasTwoKeyShortcut =
     keyShortcuts?.shift || keyShortcuts?.alt || keyShortcuts?.ctrl;
 
+  const data = {
+    label: layoutKey.label,
+    keyShortcuts: keyShortcuts
+      ? keyShortcuts
+      : createEmptyKeyShortcuts(layoutKey.id),
+  };
+
   return (
     <div
-      onClick={() => setIsEditKeyShortCutsModalOpen(true)}
+      onClick={() => openModal(key, data, onSaveKeyShortcuts)}
       className={cx(classes.key)}
     >
       <KeyShortcut
@@ -89,19 +139,6 @@ const Key = ({
           )}
         </div>
       )}
-
-      {isEditKeyShortCutsModalOpen && (
-        <EditKeyShortcutsModal
-          isOpen={isEditKeyShortCutsModalOpen}
-          onRequestClose={() => setIsEditKeyShortCutsModalOpen(false)}
-          cheatsheet={cheatsheet}
-          keyShortcuts={
-            keyShortcuts ? keyShortcuts : createEmptyKeyShortcuts(layoutKey.id)
-          }
-          label={layoutKey.label}
-          saveCheatsheet={saveCheatsheet}
-        />
-      )}
     </div>
   );
 };
@@ -119,6 +156,7 @@ const useStyles = makeStyles<{
     border: "2px solid " + ColorHex.GUNMETAL,
     borderRadius: "6px",
     margin: base(0.03),
+    boxShadow: "rgba(0, 0, 0, 0.15) 0px -3px 3px 0px inset",
     "&:hover": {
       backgroundColor: ColorHex.AMBER,
       color: ColorHex.WHITE + " !important",

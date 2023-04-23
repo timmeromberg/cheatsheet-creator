@@ -14,6 +14,7 @@ const ModalButtons = ({ children }: ModalButtonsProps): JSX.Element => {
 
 const useStyles = makeStyles()(() => ({
   buttons: {
+    paddingTop: base(0.5),
     display: "flex",
     flexDirection: "row",
     gap: base(1),

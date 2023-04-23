@@ -7,12 +7,12 @@ export interface DownloadCheatsheetButtonProps {
 }
 
 const DownloadCheatsheetButton = ({
-  ref,
+  downloadAsImageRef,
 }: DownloadCheatsheetButtonProps): JSX.Element => {
   return (
     <Button
       size={ButtonSize.BIG}
-      onClick={() => exportHtmlAsImage(ref)}
+      onClick={() => exportHtmlAsImage(downloadAsImageRef)}
       label={"Download image"}
     />
   );

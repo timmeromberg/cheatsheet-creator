@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import Button, { ButtonSize } from "../atoms/Button";
-import ToolsModal from "../templates/ToolsModal";
 import ModalForm from "../molecules/ModalForm";
 import ModalButtons from "../molecules/ModalButtons";
-import { CheatsheetDescription } from "../../domain/Cheatsheet";
 import ModalLabeledTextArea from "../molecules/ModalLabeledTextArea";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
+import { CheatsheetDescription } from "../../domain/Cheatsheet";
 
-interface EditShortcutModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
-  onSave: (description: CheatsheetDescription) => void;
+interface EditCheatsheetDescriptionFormProps {
   data: CheatsheetDescription;
+  onSave: (description: CheatsheetDescription) => void;
+  onCancel: () => void;
 }
 
-const EditShortcutModal = ({
-  isOpen,
-  onRequestClose,
-  onSave,
+const EditCheatsheetDescriptionForm = ({
   data,
-}: EditShortcutModalProps): JSX.Element => {
+  onSave,
+  onCancel,
+}: EditCheatsheetDescriptionFormProps): JSX.Element => {
   const { cx, classes } = useStyles();
 
   const [shift, setShift] = useState(data.shift);
@@ -29,11 +26,7 @@ const EditShortcutModal = ({
   const [notes, setNotes] = useState(data.notes);
 
   return (
-    <ToolsModal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      header={"Editing description"}
-    >
+    <>
       <ModalForm className={cx(classes.editDescriptionModalForm)}>
         <ModalLabeledTextArea
           label={"Shift"}
@@ -64,17 +57,18 @@ const EditShortcutModal = ({
         <Button
           size={ButtonSize.NORMAL}
           label={"Cancel"}
-          onClick={onRequestClose}
+          onClick={() => onCancel()}
         />
       </ModalButtons>
-    </ToolsModal>
+    </>
   );
 };
 
 const useStyles = makeStyles()(() => ({
   editDescriptionModalForm: {
     marginTop: base(2),
+    paddingRight: base(1),
   },
 }));
 
-export default EditShortcutModal;
+export default EditCheatsheetDescriptionForm;

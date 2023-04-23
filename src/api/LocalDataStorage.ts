@@ -10,7 +10,7 @@ export default class LocalDataStorage {
 
   async fetchCheatsheet(): Promise<Cheatsheet | undefined> {
     const cheatsheet = await this.fetchData<Cheatsheet>(CHEATSHEET_KEY);
-    return cheatsheet ? cheatsheet : { keyShortcuts: [] };
+    return cheatsheet ? cheatsheet : this.createEmptyCheatsheet();
   }
 
   async saveCheatsheet(
@@ -26,5 +26,17 @@ export default class LocalDataStorage {
 
   private async saveData<T>(key: string, object: T): Promise<T> {
     return this.storage?.setItem(key, JSON.stringify(object)) as T;
+  }
+
+  private createEmptyCheatsheet(): Cheatsheet {
+    return {
+      keyShortcuts: [],
+      description: {
+        shift: "",
+        ctrl: "",
+        alt: "",
+        notes: "",
+      },
+    };
   }
 }

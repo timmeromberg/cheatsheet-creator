@@ -38,13 +38,13 @@ const useStyles = makeStyles<{ size: ButtonSize }>()((_, { size }) => ({
         : `${base(0.5)} ${base(0.75)}`,
     backgroundColor: ColorHex.DARK_BLUE,
     color: ColorHex.WHITE,
-    border: "3px solid " + ColorHex.AMBER,
+    border: "5px solid " + ColorHex.AMBER,
     "&:hover": {
       backgroundColor: ColorHex.AMBER,
     },
     "&:active": {
       backgroundColor: ColorHex.WHITE,
-      border: "3px solid " + ColorHex.WHITE,
+      border: "5px solid " + ColorHex.WHITE,
     },
   },
 }));

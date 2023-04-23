@@ -10,13 +10,17 @@ interface HighPriorityLogoProps {
 const HighPriorityLogo = ({ color }: HighPriorityLogoProps) => {
   const { classes, cx } = useStyles(color);
 
+  const src =
+    color === ColorHex.WHITE
+      ? "/images/HP_amber2.png"
+      : "/images/HP_black2.png";
+
   return (
     <img
+      onClick={() => console.log("A")}
       className={cx(classes.highPriorityLogo)}
       alt="High Priority Logo"
-      src={
-        "/images/High-Priority-Game-Art-Logo-Name-Horz-AlphaWhite-2400x680-1-640x181.png"
-      }
+      src={src}
     />
   );
 };

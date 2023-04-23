@@ -16,9 +16,8 @@ const ModalTextArea = ({ value, onChange }: ModalTextAreaProps) => {
     <textarea
       className={cx(classes.modalTextArea)}
       onChange={(e) => onChange(e.target.value)}
-    >
-      {value}
-    </textarea>
+      value={value}
+    />
   );
 };
 

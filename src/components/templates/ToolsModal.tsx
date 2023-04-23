@@ -1,30 +1,30 @@
 import React from "react";
 import Modal from "react-modal";
 import { makeStyles } from "../../styles/theme";
-import { base } from "../../styles/base";
+import { base, pixels } from "../../styles/base";
 import { ColorHex, hexToRgba } from "../../styles/colors";
+import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 
 interface ToolsModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
-  children: JSX.Element[];
+  modalKey: ModalKey;
+  children: JSX.Element;
 }
 
-const ToolsModal = ({
-  isOpen,
-  onRequestClose,
-  children,
-}: ToolsModalProps): JSX.Element => {
+const ToolsModal = ({ modalKey, children }: ToolsModalProps): JSX.Element => {
   const { classes, cx } = useStyles();
+  const { getModalState, closeModal } = useModalContext();
 
   return (
     <Modal
       className={cx(classes.toolsModal)}
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      isOpen={!!getModalState(modalKey)?.isOpen}
+      onRequestClose={() => closeModal(modalKey)}
       overlayClassName={cx(classes.toolsModalOverlay)}
+      ariaHideApp={false}
     >
+      <div className={cx(classes.toolsModalTopTriangle)} />
       {children}
+      <div className={cx(classes.toolsModalBottomTriangle)} />
     </Modal>
   );
 };
@@ -52,6 +52,26 @@ const useStyles = makeStyles<{
     position: "fixed",
     backgroundColor: hexToRgba(ColorHex.MIDNIGHT_BLUE, 0.85),
     inset: "0px",
+  },
+  toolsModalTopTriangle: {
+    width: 0,
+    height: 0,
+    borderStyle: "solid",
+    borderWidth: "0 " + pixels(base(10)) + "px " + pixels(base(2)) + "px 0",
+    borderColor: "transparent " + ColorHex.AMBER + " transparent transparent",
+    right: 0,
+    top: 0,
+    position: "absolute",
+  },
+  toolsModalBottomTriangle: {
+    width: 0,
+    height: 0,
+    borderStyle: "solid",
+    borderWidth: pixels(base(10)) + "px 0 0 " + pixels(base(2)) + "px",
+    borderColor: "transparent transparent transparent " + ColorHex.AMBER,
+    left: 0,
+    bottom: 0,
+    position: "absolute",
   },
 }));
 

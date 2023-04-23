@@ -3,6 +3,12 @@ import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import ModalInputLabel from "../atoms/ModalInputLabel";
 import ModalInput from "../atoms/ModalInput";
+import ModalTextArea from "../atoms/ModalTextArea";
+
+export enum ModalLabeledInputSize {
+  NORMAL = "NORMAL",
+  DOUBLE = "DOUBLE",
+}
 
 interface EditShortcutModalInputProps {
   label: string;
@@ -10,6 +16,8 @@ interface EditShortcutModalInputProps {
   onChange: (value: string) => void;
   maxLength: number;
   className?: string;
+  labelClassName?: string;
+  size?: ModalLabeledInputSize;
 }
 
 const ModalLabeledInput = ({
@@ -17,29 +25,41 @@ const ModalLabeledInput = ({
   value,
   onChange,
   className,
+  labelClassName,
+  size,
 }: EditShortcutModalInputProps): JSX.Element => {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles({ size });
 
   return (
     <div className={cx(className, classes.modalLabeledInput)}>
       <ModalInputLabel
-        className={cx(classes.modalLabeledInputLabel)}
+        className={cx(labelClassName, classes.modalLabeledInputLabel)}
         label={label}
       />
-      <ModalInput value={value ? value : ""} onChange={onChange} />
+      {size === ModalLabeledInputSize.DOUBLE ? (
+        <ModalTextArea value={value ? value : ""} onChange={onChange} />
+      ) : (
+        <ModalInput value={value ? value : ""} onChange={onChange} />
+      )}
     </div>
   );
 };
 
-const useStyles = makeStyles()(() => ({
-  modalLabeledInput: {
-    display: "flex",
-    flexDirection: "row",
-    gap: base(0.3),
-  },
-  modalLabeledInputLabel: {
-    minWidth: base(4),
-  },
-}));
+const useStyles = makeStyles<{ size: number }>()((_, { size }) => {
+  const isDoubleSize = size === ModalLabeledInputSize.DOUBLE;
+  return {
+    modalLabeledInput: {
+      display: "flex",
+      flexDirection: "row",
+      gap: base(0.3),
+      alignItems: "center",
+    },
+    modalLabeledInputLabel: {
+      fontSize: isDoubleSize ? base(1.9) : null,
+      paddingBottom: isDoubleSize ? base(0.2) : null,
+      minWidth: base(4),
+    },
+  };
+});
 
 export default ModalLabeledInput;
