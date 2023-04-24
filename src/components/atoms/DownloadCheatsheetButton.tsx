@@ -1,18 +1,18 @@
 import React, { MutableRefObject } from "react";
 import Button, { ButtonSize } from "./Button";
-import exportHtmlAsImage from "../../application/exportHtmlAsImage";
+import exportHtmlAsImage from "../../application/downloadHtmlAsImage";
 
 export interface DownloadCheatsheetButtonProps {
-  downloadAsImageRef: MutableRefObject<null>;
+  downloadId: string;
 }
 
 const DownloadCheatsheetButton = ({
-  downloadAsImageRef,
+  downloadId,
 }: DownloadCheatsheetButtonProps): JSX.Element => {
   return (
     <Button
       size={ButtonSize.BIG}
-      onClick={() => exportHtmlAsImage(downloadAsImageRef)}
+      onClick={() => exportHtmlAsImage(downloadId)}
       label={"Download image"}
     />
   );

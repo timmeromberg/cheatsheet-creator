@@ -89,7 +89,7 @@ const Key = ({
   return (
     <div
       onClick={() => openModal(key, data, onSaveKeyShortcuts)}
-      className={cx(classes.key)}
+      className={cx(classes.key, "key")}
     >
       <KeyShortcut
         label={layoutKey.label}

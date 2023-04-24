@@ -14,12 +14,11 @@ import BrandCollaboration from "../components/molecules/BrandCollaboration";
 import CheatsheetDescription from "../components/atoms/CheatsheetDescription";
 
 export const AMOUNT_OF_KEY_SPACE = 24;
-export const FILLER_REDUCER = 4;
 
 const CheatsheetPage: NextPage = () => {
   const [keyboardLayout, setKeyboardLayout] = useState<KeyboardLayout>();
   const [cheatsheet, setCheatsheet] = useState<Cheatsheet>();
-  const componentRef = useRef(null);
+  const downloadId = "cheatsheet";
 
   useEffect(() => {
     async function fetchData() {
@@ -57,7 +56,7 @@ const CheatsheetPage: NextPage = () => {
         <div className={cx(classes.cheatsheet)}>
           <ToolHeader title={"Shortcut Cheatsheet Creator"} />
 
-          <div ref={componentRef} className={cx(classes.cheatsheetKeyboard)}>
+          <div id={downloadId} className={cx(classes.cheatsheetKeyboard)}>
             <Keyboard
               keyboardLayout={keyboardLayout}
               cheatsheet={cheatsheet}
@@ -77,7 +76,7 @@ const CheatsheetPage: NextPage = () => {
 
           <CheatsheetButtons
             cheatsheet={cheatsheet}
-            downloadAsImageRef={componentRef}
+            downloadId={downloadId}
             onSaveCheatsheet={saveCheatsheet}
           />
         </div>

@@ -1,7 +1,7 @@
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
-import { base } from "../../styles/base";
 import { FontWeight } from "../../styles/fontType";
+import { l, m, s, xl, xxl } from "../../styles/queries";
 
 export interface KeyShortcutProps {
   label: KeyShortcutLabel | string;
@@ -67,10 +67,25 @@ const useStyles = makeStyles<{
 }>()((theme, { color, fontSizeType }) => {
   return {
     keyShortcut: {
-      lineHeight: "0.16vw",
+      lineHeight: "0.2",
       overflowWrap: "break-all",
       letterSpacing: "-0.03vw",
       color: color,
+      [xxl]: {
+        lineHeight: "0.11",
+      },
+      [xl]: {
+        lineHeight: "0.08",
+      },
+      [l]: {
+        lineHeight: "0.075",
+      },
+      [m]: {
+        lineHeight: "0.05",
+      },
+      [s]: {
+        lineHeight: "0.01",
+      },
     },
     keyShortcutLabel: {
       fontSize: fontSizeType === FontSizeType.SMALL ? "0.55vw" : "1vw",

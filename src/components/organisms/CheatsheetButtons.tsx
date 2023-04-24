@@ -8,13 +8,13 @@ import { Cheatsheet } from "../../domain/Cheatsheet";
 import LoadCheatsheetDataButton from "../atoms/LoadCheatsheetDataButton";
 
 interface CheatsheetButtonsProps {
-  downloadAsImageRef: MutableRefObject<null>;
+  downloadId: string;
   cheatsheet: Cheatsheet;
   onSaveCheatsheet: (cheatsheet: Cheatsheet) => void;
 }
 
 const CheatsheetButtons = ({
-  downloadAsImageRef,
+  downloadId,
   cheatsheet,
   onSaveCheatsheet,
 }: CheatsheetButtonsProps) => {
@@ -22,7 +22,7 @@ const CheatsheetButtons = ({
 
   return (
     <div className={cx(classes.cheatsheetButtons)}>
-      <DownloadCheatsheetButton downloadAsImageRef={downloadAsImageRef} />
+      <DownloadCheatsheetButton downloadId={downloadId} />
       <div className={cx(classes.cheatsheetSaveLoadButtons)}>
         <SaveCheatsheetDataButton cheatsheet={cheatsheet} />
         <LoadCheatsheetDataButton onSave={onSaveCheatsheet} />

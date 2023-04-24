@@ -5,5 +5,5 @@ export default {
   m: 1024,
   l: 1280,
   xl: 1440,
-  xxl: 1920,
+  xxl: 1719,
 };
