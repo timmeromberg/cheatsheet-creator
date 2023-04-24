@@ -10,6 +10,7 @@ import {
 import KeyShortcut, { KeyShortcutLabel } from "./KeyShortcut";
 import React from "react";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
+import { AMOUNT_OF_KEY_SPACE } from "../../pages/cheatsheet";
 
 export interface KeyProps {
   layoutKey: LayoutKey;
@@ -147,19 +148,24 @@ const useStyles = makeStyles<{
   grow?: boolean;
 }>()((theme, { grow, size }) => ({
   key: {
-    paddingTop: "5px",
-    paddingLeft: "1px",
-    height: base(2),
-    width: base(size ? size : 2),
+    paddingTop: "0.22vw",
+    paddingLeft: "0.01vw",
     flexGrow: grow,
+    width: 100 / AMOUNT_OF_KEY_SPACE + "vw",
+    height: 100 / AMOUNT_OF_KEY_SPACE + "vw",
     backgroundColor: ColorHex.WHITE,
-    border: "2px solid " + ColorHex.GUNMETAL,
-    borderRadius: "6px",
+    border: "0.12vw solid " + ColorHex.GUNMETAL,
+    borderRadius: "0.3vw",
     margin: base(0.03),
-    boxShadow: "rgba(0, 0, 0, 0.15) 0px -3px 3px 0px inset",
+    boxShadow: "rgba(0, 0, 0, 0.15) 0px -0.22vw 0.22vw 0px inset",
+    cursor: "pointer",
     "&:hover": {
       backgroundColor: ColorHex.AMBER,
       color: ColorHex.WHITE + " !important",
+      //width: 100 / (AMOUNT_OF_KEY_SPACE / 2) + "vw",
+      //height: 100 / (AMOUNT_OF_KEY_SPACE / 2) + "vw",
+      transform: "scale(1.3)",
+      zIndex: 2,
     },
   },
   keyShortcuts: {

@@ -1,6 +1,6 @@
 import { makeStyles } from "../../styles/theme";
-import { base } from "../../styles/base";
 import { LayoutFiller } from "../../domain/KeyboardLayout";
+import { AMOUNT_OF_KEY_SPACE } from "../../pages/cheatsheet";
 
 export interface FillerProps {
   layoutFiller: LayoutFiller;
@@ -19,9 +19,8 @@ const useStyles = makeStyles<{
   stretch?: boolean;
 }>()((theme, { grow, size }) => ({
   key: {
-    height: base(size > 1 ? 2 : 1),
-    width: base(size ? size : 1),
-    flexGrow: grow,
+    height: 100 / (AMOUNT_OF_KEY_SPACE * size) + "vw",
+    flexGrow: 1,
   },
 }));
 

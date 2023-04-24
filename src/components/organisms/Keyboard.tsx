@@ -1,6 +1,6 @@
 import { makeStyles } from "../../styles/theme";
 import { KeyboardLayout } from "../../domain/KeyboardLayout";
-import { Cheatsheet, KeyShortcuts } from "../../domain/Cheatsheet";
+import { Cheatsheet } from "../../domain/Cheatsheet";
 import { ColorHex } from "../../styles/colors";
 import { base } from "../../styles/base";
 import KeyboardColumn from "../molecules/KeyboardColumn";
@@ -37,7 +37,6 @@ const useStyles = makeStyles<>()(() => ({
     backgroundColor: ColorHex.WHITE,
     display: "flex",
     flexDirection: "row",
-    gap: base(1),
   },
 }));
 

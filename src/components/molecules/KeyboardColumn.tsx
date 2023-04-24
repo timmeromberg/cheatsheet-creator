@@ -33,9 +33,9 @@ const KeyboardColumn = ({
 
 const useStyles = makeStyles<>()(() => ({
   keyboardColumn: {
-    backgroundColor: ColorHex.WHITE,
     display: "flex",
     flexDirection: "column",
+    flexGrow: 1,
   },
 }));
 

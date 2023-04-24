@@ -2,6 +2,9 @@ import { KeyboardLayout } from "../domain/KeyboardLayout";
 
 export default class {
   fetchKeyboardLayout = (): KeyboardLayout => {
+    const ONE_FOURTH_OF_A_KEY_DIVIDER_DISTANCE = 4;
+    const ONE_KEY_DIVIDER_DISTANCE = 1;
+
     return {
       layoutColumns: [
         {
@@ -27,7 +30,7 @@ export default class {
               ],
             },
             {
-              layoutKeys: [{ grow: 1 }],
+              layoutKeys: [{ size: ONE_FOURTH_OF_A_KEY_DIVIDER_DISTANCE }],
             },
             {
               layoutKeys: [
@@ -115,43 +118,51 @@ export default class {
           layoutRows: [
             {
               layoutKeys: [
+                { size: 1 },
                 { id: "Prt", label: "Prt" },
                 { id: "Scr", label: "Scr" },
                 { id: "Ps", label: "Ps" },
+                { size: 1 },
               ],
             },
             {
-              layoutKeys: [{}],
+              layoutKeys: [{ size: ONE_FOURTH_OF_A_KEY_DIVIDER_DISTANCE }],
             },
             {
               layoutKeys: [
+                { size: 1 },
                 { id: "Ins", label: "Ins" },
                 { id: "Home", label: "Home" },
                 { id: "Pgu", label: "Pgu" },
+                { size: 1 },
               ],
             },
             {
               layoutKeys: [
+                { size: 1 },
                 { id: "Del", label: "Del" },
                 { id: "End", label: "End" },
                 { id: "Pgd", label: "Pgd" },
+                { size: 1 },
               ],
             },
             {
-              layoutKeys: [{ size: 6 }],
+              layoutKeys: [{ size: ONE_KEY_DIVIDER_DISTANCE }],
             },
             {
               layoutKeys: [
-                { size: 2 },
+                { size: 1 },
                 { id: "ArrowKeys_Up", label: "Up" },
-                { size: 2 },
+                { size: 1 },
               ],
             },
             {
               layoutKeys: [
+                { size: 1 },
                 { id: "ArrowKeys_Left", label: "Lft" },
                 { id: "ArrowKeys_Down", label: "Dwn" },
                 { id: "ArrowKeys_Right", label: "Rgt" },
+                { size: 1 },
               ],
             },
           ],
@@ -159,10 +170,10 @@ export default class {
         {
           layoutRows: [
             {
-              layoutKeys: [{ size: 9 }],
+              layoutKeys: [{ size: 1 }],
             },
             {
-              layoutKeys: [{}],
+              layoutKeys: [{ size: 4 }],
             },
             {
               layoutKeys: [

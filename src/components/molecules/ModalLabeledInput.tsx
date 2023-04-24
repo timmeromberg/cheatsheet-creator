@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import ModalInputLabel from "../atoms/ModalInputLabel";
-import ModalInput from "../atoms/ModalInput";
+import ModalTextInput from "../atoms/ModalTextInput";
 import ModalTextArea from "../atoms/ModalTextArea";
 
 export enum ModalLabeledInputSize {
@@ -39,7 +39,7 @@ const ModalLabeledInput = ({
       {size === ModalLabeledInputSize.DOUBLE ? (
         <ModalTextArea value={value ? value : ""} onChange={onChange} />
       ) : (
-        <ModalInput value={value ? value : ""} onChange={onChange} />
+        <ModalTextInput value={value ? value : ""} onChange={onChange} />
       )}
     </div>
   );

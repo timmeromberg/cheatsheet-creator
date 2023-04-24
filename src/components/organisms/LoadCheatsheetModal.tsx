@@ -4,12 +4,17 @@ import ModalButtons from "../molecules/ModalButtons";
 import ToolsModal from "../templates/ToolsModal";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 import { Cheatsheet } from "../../domain/Cheatsheet";
+import ModalForm from "../molecules/ModalForm";
+import { makeStyles } from "../../styles/theme";
+import { ColorHex } from "../../styles/colors";
+import ModalFileInput from "../atoms/ModalFileInput";
 
 const EditKeyShortcutsModal = (): JSX.Element => {
   const key = ModalKey.LOAD_CHEATSHEET_MODAL;
   const { closeModal, getModalState } = useModalContext();
   const modalState = getModalState(key);
   const onSave = modalState.onSave as (cheatsheet: Cheatsheet) => void;
+  const { cx, classes } = useStyles();
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files?.[0];
@@ -38,9 +43,10 @@ const EditKeyShortcutsModal = (): JSX.Element => {
       onRequestClose={closeModal}
       modalKey={key}
     >
-      <div>
-        <input type="file" accept=".json" onChange={handleFileUpload} />
-      </div>
+      <ModalForm>
+        <h2 className={cx(classes.loadCheatsheetModalTitle)}>Upload file:</h2>
+        <ModalFileInput onChange={handleFileUpload} />
+      </ModalForm>
 
       <ModalButtons>
         <Button
@@ -52,5 +58,11 @@ const EditKeyShortcutsModal = (): JSX.Element => {
     </ToolsModal>
   );
 };
+
+const useStyles = makeStyles<>()(() => ({
+  loadCheatsheetModalTitle: {
+    color: ColorHex.WHITE,
+  },
+}));
 
 export default EditKeyShortcutsModal;

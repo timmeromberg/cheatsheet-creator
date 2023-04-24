@@ -13,6 +13,9 @@ import CheatsheetButtons from "../components/organisms/CheatsheetButtons";
 import BrandCollaboration from "../components/molecules/BrandCollaboration";
 import CheatsheetDescription from "../components/atoms/CheatsheetDescription";
 
+export const AMOUNT_OF_KEY_SPACE = 24;
+export const FILLER_REDUCER = 4;
+
 const CheatsheetPage: NextPage = () => {
   const [keyboardLayout, setKeyboardLayout] = useState<KeyboardLayout>();
   const [cheatsheet, setCheatsheet] = useState<Cheatsheet>();
@@ -119,6 +122,7 @@ const useStyles = makeStyles<>()(() => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingRight: base(2),
   },
   cheatsheetDescription: {
     color: ColorHex.LIGHT_GRAY,

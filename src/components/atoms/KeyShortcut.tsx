@@ -67,17 +67,17 @@ const useStyles = makeStyles<{
 }>()((theme, { color, fontSizeType }) => {
   return {
     keyShortcut: {
-      lineHeight: base(0.1),
+      lineHeight: "0.16vw",
       overflowWrap: "break-all",
-      letterSpacing: "-0.5px",
+      letterSpacing: "-0.03vw",
       color: color,
     },
     keyShortcutLabel: {
-      fontSize: fontSizeType === FontSizeType.SMALL ? base(0.25) : base(0.5),
+      fontSize: fontSizeType === FontSizeType.SMALL ? "0.55vw" : "1vw",
       fontWeight: FontWeight.BOLD,
     },
     keyShortcutValue: {
-      fontSize: base(0.25),
+      fontSize: "0.5vw",
       fontWeight: FontWeight.LIGHT,
     },
   };

@@ -5,25 +5,24 @@ import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";
 
 interface ModalInputProps {
-  value: string;
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ModalInput = ({ value, onChange }: ModalInputProps) => {
+const ModalFileInput = ({ onChange }: ModalInputProps) => {
   const { cx, classes } = useStyles();
 
   return (
     <input
-      value={value}
-      type="text"
-      className={cx(classes.modalInput)}
-      onChange={(e) => onChange(e.target.value)}
+      type="file"
+      accept=".json"
+      className={cx(classes.modalFileInput)}
+      onChange={onChange}
     />
   );
 };
 
 const useStyles = makeStyles()(() => ({
-  modalInput: {
+  modalFileInput: {
     width: "100%",
     backgroundColor: ColorHex.LIGHT_BLUE,
     color: ColorHex.WHITE,
@@ -34,4 +33,4 @@ const useStyles = makeStyles()(() => ({
   },
 }));
 
-export default ModalInput;
+export default ModalFileInput;
