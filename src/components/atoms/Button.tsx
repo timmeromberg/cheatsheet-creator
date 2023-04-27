@@ -5,7 +5,7 @@ import { ColorHex } from "../../styles/colors";
 
 export interface ButtonProps {
   label: string;
-  onClick: any;
+  onClick: () => void;
   size: ButtonSize;
 }
 

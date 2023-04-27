@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from "react";
+import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";
@@ -31,7 +31,7 @@ const CheatsheetButtons = ({
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   cheatsheetButtons: {
     display: "flex",
     flexDirection: "row",

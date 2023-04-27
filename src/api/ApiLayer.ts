@@ -1,6 +1,6 @@
 import { KeyboardLayout } from "../domain/KeyboardLayout";
 
-export default class {
+export default class ApiLayer {
   fetchKeyboardLayout = (): KeyboardLayout => {
     const ONE_FOURTH_OF_A_KEY_DIVIDER_DISTANCE = 4;
     const ONE_KEY_DIVIDER_DISTANCE = 1;

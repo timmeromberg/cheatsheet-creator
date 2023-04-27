@@ -38,16 +38,11 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   };
 
   return (
-    <ToolsModal
-      isOpen={modalState.isOpen}
-      onRequestClose={closeModal}
-      modalKey={key}
-    >
+    <ToolsModal modalKey={key}>
       <ModalForm>
         <h2 className={cx(classes.loadCheatsheetModalTitle)}>Upload file:</h2>
         <ModalFileInput onChange={handleFileUpload} />
       </ModalForm>
-
       <ModalButtons>
         <Button
           size={ButtonSize.NORMAL}
@@ -59,7 +54,7 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   loadCheatsheetModalTitle: {
     color: ColorHex.WHITE,
   },

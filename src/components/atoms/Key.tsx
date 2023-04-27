@@ -1,6 +1,5 @@
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
-import { base } from "../../styles/base";
 import { LayoutKey } from "../../domain/KeyboardLayout";
 import {
   Cheatsheet,
@@ -145,27 +144,30 @@ const Key = ({
 };
 
 const useStyles = makeStyles<{
-  grow?: boolean;
+  grow?: number;
+  size?: number;
 }>()((theme, { grow, size }) => ({
   key: {
     paddingTop: "0.22vw",
     paddingLeft: "0.01vw",
     flexGrow: grow,
-    width: 100 / AMOUNT_OF_KEY_SPACE + "vw",
+    width: 100 / (AMOUNT_OF_KEY_SPACE / (size ? 2 : 1)) + "vw",
     height: 100 / AMOUNT_OF_KEY_SPACE + "vw",
+
     backgroundColor: ColorHex.WHITE,
     border: "0.12vw solid " + ColorHex.GUNMETAL,
     borderRadius: "0.3vw",
-    margin: base(0.03),
+    marginTop: "0.06vw",
+    marginBottom: "0.06vw",
+    marginLeft: "0.06vw",
+
     boxShadow: "rgba(0, 0, 0, 0.15) 0px -0.22vw 0.22vw 0px inset",
     cursor: "pointer",
-    "&:hover": {
+    "&:hover:not(:focus)": {
       backgroundColor: ColorHex.AMBER,
       color: ColorHex.WHITE + " !important",
-      //width: 100 / (AMOUNT_OF_KEY_SPACE / 2) + "vw",
-      //height: 100 / (AMOUNT_OF_KEY_SPACE / 2) + "vw",
       transform: "scale(1.3)",
-      zIndex: 2,
+      zIndex: 0,
     },
   },
   keyShortcuts: {

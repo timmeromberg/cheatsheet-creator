@@ -12,9 +12,7 @@ export interface ModalState {
   onSave?: unknown;
 }
 
-interface ModalStates {
-  [key: ModalKey]: ModalState;
-}
+type ModalStates = Record<ModalKey, ModalState>;
 
 interface ModalContextValue {
   getModalState: (key: ModalKey) => ModalState;
@@ -24,8 +22,18 @@ interface ModalContextValue {
 
 const ModalContext = createContext<ModalContextValue | undefined>(undefined);
 
-export const ModalProvider = ({ children }) => {
-  const [modalStates, setModalStates] = useState<ModalStates>({});
+interface ModalProviderProps {
+  children: JSX.Element[];
+}
+
+export const ModalProvider = ({ children }: ModalProviderProps) => {
+  const modalStates2: ModalStates = {
+    [ModalKey.EDIT_CHEATSHEET_DESCRIPTION_MODAL]: { isOpen: false },
+    [ModalKey.EDIT_SHORTCUTS_MODAL]: { isOpen: false },
+    [ModalKey.LOAD_CHEATSHEET_MODAL]: { isOpen: false },
+  };
+
+  const [modalStates, setModalStates] = useState<ModalStates>(modalStates2);
 
   const getModalState = (key: ModalKey) => modalStates[key];
 

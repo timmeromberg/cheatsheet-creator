@@ -45,21 +45,23 @@ const ModalLabeledInput = ({
   );
 };
 
-const useStyles = makeStyles<{ size: number }>()((_, { size }) => {
-  const isDoubleSize = size === ModalLabeledInputSize.DOUBLE;
-  return {
-    modalLabeledInput: {
-      display: "flex",
-      flexDirection: "row",
-      gap: base(0.3),
-      alignItems: "center",
-    },
-    modalLabeledInputLabel: {
-      fontSize: isDoubleSize ? base(1.9) : null,
-      paddingBottom: isDoubleSize ? base(0.2) : null,
-      minWidth: base(4),
-    },
-  };
-});
+const useStyles = makeStyles<{ size?: ModalLabeledInputSize }>()(
+  (_, { size }) => {
+    const isDoubleSize = size === ModalLabeledInputSize.DOUBLE;
+    return {
+      modalLabeledInput: {
+        display: "flex",
+        flexDirection: "row",
+        gap: base(0.3),
+        alignItems: "center",
+      },
+      modalLabeledInputLabel: {
+        fontSize: isDoubleSize ? base(1.9) : undefined,
+        paddingBottom: isDoubleSize ? base(0.2) : undefined,
+        minWidth: base(4),
+      },
+    };
+  }
+);
 
 export default ModalLabeledInput;

@@ -4,10 +4,12 @@ import { makeStyles } from "../../styles/theme";
 import { base, pixels } from "../../styles/base";
 import { ColorHex, hexToRgba } from "../../styles/colors";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
+import { jsx } from "@emotion/react";
+import JSX = jsx.JSX;
 
 interface ToolsModalProps {
   modalKey: ModalKey;
-  children: JSX.Element;
+  children: JSX.Element[] | JSX.Element;
 }
 
 const ToolsModal = ({ modalKey, children }: ToolsModalProps): JSX.Element => {
@@ -29,9 +31,7 @@ const ToolsModal = ({ modalKey, children }: ToolsModalProps): JSX.Element => {
   );
 };
 
-const useStyles = makeStyles<{
-  grow?: boolean;
-}>()(() => ({
+const useStyles = makeStyles()(() => ({
   toolsModal: {
     height: base(16),
     width: base(16),

@@ -25,7 +25,7 @@ export default class LocalDataStorage {
   }
 
   private async saveData<T>(key: string, object: T): Promise<T> {
-    return this.storage?.setItem(key, JSON.stringify(object)) as T;
+    return this.storage?.setItem(key, JSON.stringify(object)) as unknown as T;
   }
 
   private createEmptyCheatsheet(): Cheatsheet {

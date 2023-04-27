@@ -27,7 +27,7 @@ const ToolTitleWithBrands = ({ title }: ToolTitleWithBrandsProps) => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   toolTitleWithBrandsTitle: {
     color: ColorHex.WHITE,
   },

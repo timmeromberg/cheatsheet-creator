@@ -23,7 +23,7 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "next" // Replace "plugin:next/recommended" with "next"
+    "next/core-web-vitals"
   ],
   "rules": {
     "no-duplicate-case": "warn",

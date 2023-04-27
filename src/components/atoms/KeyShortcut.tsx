@@ -41,8 +41,8 @@ const getLabelColor = (label: KeyShortcutLabel | string): ColorHex => {
   }
 };
 
-function isValueEnum(value: any): value is KeyShortcutLabel {
-  return Object.values(KeyShortcutLabel).includes(value);
+function isValueEnum(value: string): value is KeyShortcutLabel {
+  return (Object.values(KeyShortcutLabel) as Array<string>).includes(value);
 }
 
 const KeyShortcut = ({ label, value }: KeyShortcutProps): JSX.Element => {
@@ -64,38 +64,36 @@ const KeyShortcut = ({ label, value }: KeyShortcutProps): JSX.Element => {
 const useStyles = makeStyles<{
   color: ColorHex;
   fontSizeType: FontSizeType;
-}>()((theme, { color, fontSizeType }) => {
-  return {
-    keyShortcut: {
-      lineHeight: "0.2",
-      overflowWrap: "break-all",
-      letterSpacing: "-0.03vw",
-      color: color,
-      [xxl]: {
-        lineHeight: "0.11",
-      },
-      [xl]: {
-        lineHeight: "0.08",
-      },
-      [l]: {
-        lineHeight: "0.075",
-      },
-      [m]: {
-        lineHeight: "0.05",
-      },
-      [s]: {
-        lineHeight: "0.01",
-      },
+}>()((_, { color, fontSizeType }) => ({
+  keyShortcut: {
+    //overflowWrap: 'break-all',
+    lineHeight: "0.2",
+    letterSpacing: "-0.03vw",
+    color: color,
+    [xxl]: {
+      lineHeight: "0.11",
     },
-    keyShortcutLabel: {
-      fontSize: fontSizeType === FontSizeType.SMALL ? "0.55vw" : "1vw",
-      fontWeight: FontWeight.BOLD,
+    [xl]: {
+      lineHeight: "0.08",
     },
-    keyShortcutValue: {
-      fontSize: "0.5vw",
-      fontWeight: FontWeight.LIGHT,
+    [l]: {
+      lineHeight: "0.075",
     },
-  };
-});
+    [m]: {
+      lineHeight: "0.05",
+    },
+    [s]: {
+      lineHeight: "0.01",
+    },
+  },
+  keyShortcutLabel: {
+    fontSize: fontSizeType === FontSizeType.SMALL ? "0.55vw" : "1vw",
+    fontWeight: FontWeight.BOLD,
+  },
+  keyShortcutValue: {
+    fontSize: "0.5vw",
+    fontWeight: FontWeight.LIGHT,
+  },
+}));
 
 export default KeyShortcut;

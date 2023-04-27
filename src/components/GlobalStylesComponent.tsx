@@ -5,7 +5,7 @@ import queries from "../styles/queries";
 import { body, h1, h2, h3, h4 } from "../styles/fontType";
 
 interface GlobalStylesComponentProps {
-  children: JSX.Element[];
+  children: JSX.Element;
 }
 
 const GlobalStylesComponent = ({ children }: GlobalStylesComponentProps) => {

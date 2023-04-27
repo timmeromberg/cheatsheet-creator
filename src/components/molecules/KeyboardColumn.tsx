@@ -2,7 +2,6 @@ import { makeStyles } from "../../styles/theme";
 import { LayoutColumn } from "../../domain/KeyboardLayout";
 import KeyboardRow from "./KeyboardRow";
 import { Cheatsheet } from "../../domain/Cheatsheet";
-import { ColorHex } from "../../styles/colors";
 
 interface KeyboardColumnProps {
   layoutColumn: LayoutColumn;
@@ -31,7 +30,7 @@ const KeyboardColumn = ({
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   keyboardColumn: {
     display: "flex",
     flexDirection: "column",

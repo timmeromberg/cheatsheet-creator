@@ -1,10 +1,9 @@
 import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
-import Button from "../atoms/Button";
 
 interface ModalButtonsProps {
-  children: Button[];
+  children: JSX.Element | JSX.Element[];
 }
 
 const ModalButtons = ({ children }: ModalButtonsProps): JSX.Element => {

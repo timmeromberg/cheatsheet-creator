@@ -18,10 +18,11 @@ export interface LayoutKey {
 }
 
 export interface LayoutFiller {
-  grow?: number;
   size?: number;
 }
 
-export function isLayoutKey(object: any): object is LayoutKey {
+export function isLayoutKey(
+  object: LayoutKey | LayoutFiller
+): object is LayoutKey {
   return "label" in object;
 }

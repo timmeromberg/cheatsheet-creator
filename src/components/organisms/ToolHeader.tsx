@@ -20,7 +20,7 @@ const ToolHeader = ({ title }: ToolHeaderProps) => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   titleBar: {
     paddingTop: base(0.2),
     paddingBottom: base(0.2),

@@ -8,7 +8,7 @@ interface HighPriorityLogoProps {
 }
 
 const HighPriorityLogo = ({ color }: HighPriorityLogoProps) => {
-  const { classes, cx } = useStyles(color);
+  const { classes, cx } = useStyles({ color: color });
 
   const src =
     color === ColorHex.WHITE
@@ -25,7 +25,7 @@ const HighPriorityLogo = ({ color }: HighPriorityLogoProps) => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles<{ color: ColorHex }>()(() => ({
   highPriorityLogo: {
     maxHeight: base(2),
     padding: base(0.1),

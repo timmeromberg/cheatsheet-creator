@@ -7,7 +7,7 @@ function useTheme() {
 }
 
 export const getStyles = () => {
-  const { makeStyles, withStyles, useStyles } = createMakeAndWithStyles({
+  const { makeStyles } = createMakeAndWithStyles({
     useTheme,
   });
   return makeStyles;

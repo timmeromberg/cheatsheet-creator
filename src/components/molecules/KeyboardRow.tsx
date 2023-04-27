@@ -2,7 +2,7 @@ import { makeStyles } from "../../styles/theme";
 import Key from "../atoms/Key";
 import { isLayoutKey, LayoutKey, LayoutRow } from "../../domain/KeyboardLayout";
 import Filler from "../atoms/Filler";
-import { Cheatsheet, KeyShortcuts } from "../../domain/Cheatsheet";
+import { Cheatsheet } from "../../domain/Cheatsheet";
 
 interface KeyboardRowProps {
   layoutRow: LayoutRow;
@@ -23,11 +23,9 @@ const KeyboardRow = ({
         isLayoutKey(layoutItem) ? (
           <Key
             key={index}
-            keyShortcuts={
-              cheatsheet.keyShortcuts.find(
-                (shortcut) => shortcut.id === (layoutItem as LayoutKey).id
-              )!
-            }
+            keyShortcuts={cheatsheet.keyShortcuts.find(
+              (shortcut) => shortcut.id === (layoutItem as LayoutKey).id
+            )}
             layoutKey={layoutItem}
             cheatsheet={cheatsheet}
             saveCheatsheet={saveCheatsheet}
@@ -40,7 +38,7 @@ const KeyboardRow = ({
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   keyboardRow: {
     display: "flex",
     flexDirection: "row",

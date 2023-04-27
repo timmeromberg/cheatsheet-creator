@@ -2,7 +2,6 @@ import React from "react";
 import { Cheatsheet, CheatsheetDescription } from "../../domain/Cheatsheet";
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
-import EditDescriptionModal from "../organisms/EditCheatsheetDescriptionModal";
 import { FontWeight } from "../../styles/fontType";
 import { base } from "../../styles/base";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";

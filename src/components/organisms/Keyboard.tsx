@@ -2,7 +2,6 @@ import { makeStyles } from "../../styles/theme";
 import { KeyboardLayout } from "../../domain/KeyboardLayout";
 import { Cheatsheet } from "../../domain/Cheatsheet";
 import { ColorHex } from "../../styles/colors";
-import { base } from "../../styles/base";
 import KeyboardColumn from "../molecules/KeyboardColumn";
 
 interface KeyboardProps {
@@ -32,7 +31,7 @@ const Keyboard = ({
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   keyboard: {
     backgroundColor: ColorHex.WHITE,
     display: "flex",

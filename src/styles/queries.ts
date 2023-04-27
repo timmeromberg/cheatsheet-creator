@@ -1,4 +1,4 @@
-import breakpoints from './breakpoints';
+import breakpoints from "./breakpoints";
 
 export const mobileL = `@media(max-width: ${breakpoints.mobile_l}px)`;
 
@@ -14,7 +14,7 @@ export const xl = `@media(max-width: ${breakpoints.xl}px)`;
 
 export const xxl = `@media(max-width: ${breakpoints.xxl}px)`;
 
-export default {
+const queries = {
   mobileL,
   xs,
   s,
@@ -23,3 +23,5 @@ export default {
   xl,
   xxl,
 };
+
+export default queries;

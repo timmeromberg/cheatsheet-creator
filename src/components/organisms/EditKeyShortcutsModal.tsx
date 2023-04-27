@@ -45,11 +45,7 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   const { cx, classes } = useStyles();
 
   return (
-    <ToolsModal
-      isOpen={modalState.isOpen}
-      onRequestClose={closeModal}
-      modalKey={key}
-    >
+    <ToolsModal modalKey={ModalKey.EDIT_SHORTCUTS_MODAL}>
       <ModalForm className={cx(classes.editShortcutsModal)}>
         <ModalLabeledInput
           label={label}

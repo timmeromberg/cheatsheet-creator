@@ -22,7 +22,7 @@ const BrandCollaboration = ({ color }: BrandCollaborationProps) => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   brandCollaboration: {
     display: "flex",
     flexDirection: "row",

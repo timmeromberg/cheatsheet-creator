@@ -2,7 +2,7 @@ import Keyboard from "../components/organisms/Keyboard";
 import { Cheatsheet } from "../domain/Cheatsheet";
 import { makeStyles } from "../styles/theme";
 import { base } from "../styles/base";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { KeyboardLayout } from "../domain/KeyboardLayout";
 import { NextPage } from "next";
 import LocalDataStorage from "../api/LocalDataStorage";
@@ -85,7 +85,7 @@ const CheatsheetPage: NextPage = () => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   cheatsheet: {
     display: "flex",
     flexDirection: "column",

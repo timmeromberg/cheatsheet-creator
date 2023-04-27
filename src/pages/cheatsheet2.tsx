@@ -45,7 +45,7 @@ const Cheatsheet2Page: NextPage = () => {
   );
 };
 
-const useStyles = makeStyles<>()(() => ({
+const useStyles = makeStyles()(() => ({
   keyboard: {
     display: "flex",
     flexDirection: "row",
