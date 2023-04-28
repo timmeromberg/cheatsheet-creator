@@ -2,20 +2,19 @@ import Keyboard from "../components/organisms/Keyboard";
 import { Cheatsheet } from "../domain/Cheatsheet";
 import { makeStyles } from "../styles/theme";
 import { base } from "../styles/base";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { KeyboardLayout } from "../domain/KeyboardLayout";
-import { NextPage } from "next";
 import LocalDataStorage from "../api/LocalDataStorage";
 import ApiLayer from "../api/ApiLayer";
 import { ColorHex } from "../styles/colors";
 import ToolHeader from "../components/organisms/ToolHeader";
 import CheatsheetButtons from "../components/organisms/CheatsheetButtons";
 import BrandCollaboration from "../components/molecules/BrandCollaboration";
-import CheatsheetDescription from "../components/atoms/CheatsheetDescription";
+import CheatsheetDescriptionComponent from "../components/atoms/CheatsheetDescriptionComponent";
 
 export const AMOUNT_OF_KEY_SPACE = 24;
 
-const CheatsheetPage: NextPage = () => {
+const CheatsheetPage = () => {
   const [keyboardLayout, setKeyboardLayout] = useState<KeyboardLayout>();
   const [cheatsheet, setCheatsheet] = useState<Cheatsheet>();
   const downloadId = "cheatsheet";
@@ -66,7 +65,7 @@ const CheatsheetPage: NextPage = () => {
             <div
               className={cx(classes.cheatsheetDescriptionBrandCollaboration)}
             >
-              <CheatsheetDescription
+              <CheatsheetDescriptionComponent
                 cheatsheet={cheatsheet}
                 saveCheatsheet={saveCheatsheet}
               />

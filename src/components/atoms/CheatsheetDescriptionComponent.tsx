@@ -1,4 +1,3 @@
-import React from "react";
 import { Cheatsheet, CheatsheetDescription } from "../../domain/Cheatsheet";
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
@@ -11,7 +10,7 @@ interface CheatsheetDescriptionProps {
   saveCheatsheet: (cheatsheet: Cheatsheet) => void;
 }
 
-const CheatsheetDescription = ({
+const CheatsheetDescriptionComponent = ({
   cheatsheet,
   saveCheatsheet,
 }: CheatsheetDescriptionProps) => {
@@ -82,4 +81,4 @@ const useStyles = makeStyles()(() => ({
   },
 }));
 
-export default CheatsheetDescription;
+export default CheatsheetDescriptionComponent;

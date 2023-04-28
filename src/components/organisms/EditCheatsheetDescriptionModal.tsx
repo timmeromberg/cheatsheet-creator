@@ -1,4 +1,3 @@
-import React from "react";
 import ToolsModal from "../templates/ToolsModal";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 import EditCheatsheetDescriptionForm from "./EditCheatsheetDescriptionForm";

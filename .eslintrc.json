@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2022,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -15,6 +15,7 @@
   "env": {
     "browser": true,
     "amd": true,
+    "es2020": true,
     "node": true
   },
   "extends": [
@@ -22,16 +23,20 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "next/core-web-vitals"
+    "plugin:react-hooks/recommended"
   ],
   "rules": {
     "no-duplicate-case": "warn",
-    "no-dupe-class-members": "warn"
+    "no-dupe-class-members": "warn",
+    "react-refresh/only-export-components": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "react/jsx-uses-vars": "error"
   },
   "plugins": [
     "react",
     "@typescript-eslint",
-    "react-hooks"
+    "react-hooks",
+    "react-refresh"
   ]
 }

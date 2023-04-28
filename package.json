@@ -1,39 +1,41 @@
 {
   "name": "graphic-tools",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev -p 3030",
-    "build": "next build",
-    "start": "next start -p 3030",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore . && tsc --noEmit"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
-    "eslint-config-next": "13.2.4",
     "html2canvas": "^1.4.1",
-    "next": "13.2.4",
-    "prettier": "^2.8.7",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-modal": "^3.16.1",
     "tss-react": "^4.8.2"
   },
   "devDependencies": {
-    "@types/react-modal": "^3.13.1",
+    "prettier": "^2.8.7",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "eslint": "8.37.0",
-    "eslint-plugin-react": "^7.32.2",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "typescript": "5.0.4"
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "@types/react-modal": "^3.13.1",
+    "eslint-plugin-react": "^7.32.2"
   }
 }
