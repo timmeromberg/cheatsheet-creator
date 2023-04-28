@@ -1,6 +1,6 @@
 import { makeStyles } from "../../styles/theme";
 import { LayoutFiller } from "../../domain/KeyboardLayout";
-import { AMOUNT_OF_KEY_SPACE } from "../../pages/cheatsheet";
+import { AMOUNT_OF_KEY_SPACE } from "../../pages/CheatsheetPage";
 
 export interface FillerProps {
   layoutFiller: LayoutFiller;

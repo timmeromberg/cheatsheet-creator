@@ -1,10 +1,9 @@
 import { makeStyles } from "../styles/theme";
 import React from "react";
-import { NextPage } from "next";
 import { ColorHex } from "../styles/colors";
 import { base } from "../styles/base";
 
-const Cheatsheet2Page: NextPage = () => {
+const TestPage = () => {
   const { cx, classes } = useStyles();
 
   return (
@@ -71,4 +70,4 @@ const useStyles = makeStyles()(() => ({
   keyContent: {},
 }));
 
-export default Cheatsheet2Page;
+export default TestPage;

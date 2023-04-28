@@ -9,7 +9,7 @@ import {
 import KeyShortcut, { KeyShortcutLabel } from "./KeyShortcut";
 import React from "react";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
-import { AMOUNT_OF_KEY_SPACE } from "../../pages/cheatsheet";
+import { AMOUNT_OF_KEY_SPACE } from "../../pages/CheatsheetPage";
 
 export interface KeyProps {
   layoutKey: LayoutKey;
