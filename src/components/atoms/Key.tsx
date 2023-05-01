@@ -148,7 +148,7 @@ const useStyles = makeStyles<{
   size?: number;
 }>()((theme, { grow, size }) => ({
   key: {
-    paddingTop: "0.22vw",
+    paddingTop: "0.05vw",
     paddingLeft: "0.01vw",
     flexGrow: grow,
     width: 100 / (AMOUNT_OF_KEY_SPACE / (size ? 2 : 1)) + "vw",

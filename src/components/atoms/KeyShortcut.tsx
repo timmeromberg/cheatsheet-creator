@@ -1,7 +1,6 @@
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";
-import { l, m, s, xl, xxl } from "../../styles/queries";
 
 export interface KeyShortcutProps {
   label: KeyShortcutLabel | string;
@@ -17,7 +16,7 @@ export enum KeyShortcutLabel {
   ALT_SHIFT = "A+S:",
 }
 
-enum FontSizeType {
+enum LabelFontSizeType {
   BIG = "BIG",
   SMALL = "SMALL",
 }
@@ -50,7 +49,7 @@ const KeyShortcut = ({ label, value }: KeyShortcutProps): JSX.Element => {
 
   const { classes, cx } = useStyles({
     color: getLabelColor(label),
-    fontSizeType: isNotKeyOnly ? FontSizeType.SMALL : FontSizeType.BIG,
+    fontSizeType: isNotKeyOnly ? LabelFontSizeType.SMALL : LabelFontSizeType.BIG,
   });
 
   return (
@@ -63,7 +62,7 @@ const KeyShortcut = ({ label, value }: KeyShortcutProps): JSX.Element => {
 
 const useStyles = makeStyles<{
   color: ColorHex;
-  fontSizeType: FontSizeType;
+  fontSizeType: LabelFontSizeType;
 }>()((_, { color, fontSizeType }) => ({
   keyShortcut: {
     //overflowWrap: 'break-all',
@@ -74,7 +73,7 @@ const useStyles = makeStyles<{
     color: color,
   },
   keyShortcutLabel: {
-    fontSize: fontSizeType === FontSizeType.SMALL ? "0.55vw" : "1vw",
+    fontSize: fontSizeType === LabelFontSizeType.SMALL ? "0.55vw" : "1vw",
     fontWeight: FontWeight.BOLD,
   },
   keyShortcutValue: {

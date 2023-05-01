@@ -27,7 +27,7 @@ const ResetCheatsheetModal = (): JSX.Element => {
       <ModalForm>
         <h2 className={cx(classes.resetCheatsheetModalTitle)}>Reset Cheatsheet</h2>
         <div className={cx(classes.resetCheatsheetModalDescription)}>
-          <span>WARNING: All your shortcuts will be deleted! </span>
+          <span>WARNING: All your shortcuts will be deleted! This can not be undone! </span>
           <span>It might be wise to make a backup using the the Save cheatsheet button first.</span>
           <span>Are you still sure you want to reset your cheatsheet?</span>
         </div>
