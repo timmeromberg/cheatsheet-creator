@@ -6,6 +6,7 @@ import DownloadCheatsheetButton from "../atoms/DownloadCheatsheetButton";
 import SaveCheatsheetDataButton from "../atoms/SaveCheatsheetDataButton";
 import { Cheatsheet } from "../../domain/Cheatsheet";
 import LoadCheatsheetDataButton from "../atoms/LoadCheatsheetDataButton";
+import ResetCheatsheetDataButton from "../atoms/ResetCheatsheetDataButton";
 
 interface CheatsheetButtonsProps {
   downloadId: string;
@@ -26,6 +27,7 @@ const CheatsheetButtons = ({
       <div className={cx(classes.cheatsheetSaveLoadButtons)}>
         <SaveCheatsheetDataButton cheatsheet={cheatsheet} />
         <LoadCheatsheetDataButton onSave={onSaveCheatsheet} />
+        <ResetCheatsheetDataButton onSave={onSaveCheatsheet} />
       </div>
     </div>
   );

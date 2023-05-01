@@ -2,6 +2,7 @@ import EditDescriptionModal from "./organisms/EditCheatsheetDescriptionModal";
 import EditKeyShortcutsModal from "./organisms/EditKeyShortcutsModal";
 import { ModalKey, useModalContext } from "../hooks/ModalProvider";
 import LoadCheatsheetModal from "./organisms/LoadCheatsheetModal";
+import ResetCheatsheetModal from "./organisms/ResetCheatsheetModal";
 
 export const Modals = () => {
   const { getModalState } = useModalContext();
@@ -15,6 +16,9 @@ export const Modals = () => {
       )}
       {getModalState(ModalKey.LOAD_CHEATSHEET_MODAL)?.isOpen && (
         <LoadCheatsheetModal />
+      )}
+      {getModalState(ModalKey.RESET_CHEATSHEET_MODAL)?.isOpen && (
+        <ResetCheatsheetModal />
       )}
     </>
   );

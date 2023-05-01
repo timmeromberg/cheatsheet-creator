@@ -3,10 +3,9 @@ import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";
 
-export interface ButtonProps {
-  label: string;
-  onClick: () => void;
-  size: ButtonSize;
+export enum ButtonType {
+  NORMAL = 'NORMAL',
+  WARNING = 'WARNING'
 }
 
 export enum ButtonSize {
@@ -14,8 +13,17 @@ export enum ButtonSize {
   BIG = "BIG",
 }
 
-const Button = ({ label, onClick, size }: ButtonProps): JSX.Element => {
-  const { classes, cx } = useStyles({ size: size });
+export interface ButtonProps {
+  label: string;
+  onClick: () => void;
+  size: ButtonSize;
+  type?: ButtonType
+}
+
+const Button = ({ label, onClick, size, type }: ButtonProps): JSX.Element => {
+  const type_ = type ? type : ButtonType.NORMAL
+  const size_ = size ? size: ButtonType.NORMAL
+  const { classes, cx } = useStyles({ size: size_, type: type_ });
 
   return (
     <button className={cx(classes.button)} onClick={onClick}>
@@ -24,7 +32,7 @@ const Button = ({ label, onClick, size }: ButtonProps): JSX.Element => {
   );
 };
 
-const useStyles = makeStyles<{ size: ButtonSize }>()((_, { size }) => ({
+const useStyles = makeStyles<{ size: ButtonSize, type: ButtonType }>()((_, { size, type }) => ({
   button: {
     fontSize: base(size === ButtonSize.NORMAL ? 0.5 : 0.85),
     fontWeight: 700,
@@ -38,9 +46,10 @@ const useStyles = makeStyles<{ size: ButtonSize }>()((_, { size }) => ({
         : `${base(0.5)} ${base(0.75)}`,
     backgroundColor: ColorHex.DARK_BLUE,
     color: ColorHex.WHITE,
-    border: "5px solid " + ColorHex.AMBER,
+    border: "5px solid " + (type === ButtonType.NORMAL ? ColorHex.AMBER : ColorHex.MAROON),
     "&:hover": {
-      backgroundColor: ColorHex.AMBER,
+      backgroundColor: type === ButtonType.NORMAL ? ColorHex.AMBER : ColorHex.MAROON,
+
     },
     "&:active": {
       backgroundColor: ColorHex.WHITE,

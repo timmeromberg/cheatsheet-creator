@@ -33,3 +33,15 @@ export const createEmptyKeyShortcuts = (id: string): KeyShortcuts => {
     altShift: "",
   };
 };
+
+export const createEmptyCheatsheet = (): Cheatsheet => {
+  return {
+    keyShortcuts: [],
+    description: {
+      shift: '',
+      ctrl: '',
+      alt: '',
+      notes: ''
+    }
+  }
+}
