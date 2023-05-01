@@ -6,7 +6,7 @@ The assigned actions are displayed on the keyboard layout, which can be used for
 Additionally, a downloadable PNG is available for offline use or printing (which is the primary purpose).
 The inputted actions are stored using local storage, and a backup can be created or restored with the Save/Load Cheat Sheet functions.
 
-This application serves as a marketing tool for a Video Game Art Design Studio called "High Priority".
+This tool serves as a marketing tool for a Video Game Art Design Studio called "High Priority".
 
 ## Table of Contents
 
