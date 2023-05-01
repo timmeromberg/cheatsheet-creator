@@ -180,7 +180,7 @@ const useStyles = makeStyles<{
     borderRadius: "0.3vw",
     marginTop: "0.06vw",
     marginBottom: "0.06vw",
-    marginLeft: "0.06vw",
+    marginLeft: "0.12vw",
 
     boxShadow: "rgba(0, 0, 0, 0.15) 0px -0.22vw 0.22vw 0px inset",
     cursor: "pointer",
