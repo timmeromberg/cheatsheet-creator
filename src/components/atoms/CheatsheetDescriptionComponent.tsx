@@ -72,8 +72,18 @@ const useStyles = makeStyles()(() => ({
   cheatsheetDescription: {
     color: ColorHex.DARK_GRAY,
     fontWeight: FontWeight.LIGHT,
-    paddingTop: base(0.3),
+    marginTop: base(0.3),
     lineHeight: base(0.7),
+    cursor: 'pointer',
+    width: '100%',
+    border: "0.12vw solid " + ColorHex.WHITE,
+    borderRadius: "0.3vw",
+    "&:hover:not(:focus)": {
+      backgroundColor: ColorHex.AMBER,
+      border: "0.12vw solid " + ColorHex.GUNMETAL,
+      borderRadius: "0.3vw",
+      color: ColorHex.WHITE + " !important",
+    },
   },
   cheatsheetDescriptionLabel: {
     color: ColorHex.DARK_GRAY,
