@@ -67,24 +67,11 @@ const useStyles = makeStyles<{
 }>()((_, { color, fontSizeType }) => ({
   keyShortcut: {
     //overflowWrap: 'break-all',
-    lineHeight: "0.2",
+    display: 'flex',
+    flexDirection: 'row',
+    lineHeight: "0.8",
     letterSpacing: "-0.03vw",
     color: color,
-    [xxl]: {
-      lineHeight: "0.11",
-    },
-    [xl]: {
-      lineHeight: "0.08",
-    },
-    [l]: {
-      lineHeight: "0.075",
-    },
-    [m]: {
-      lineHeight: "0.05",
-    },
-    [s]: {
-      lineHeight: "0.01",
-    },
   },
   keyShortcutLabel: {
     fontSize: fontSizeType === FontSizeType.SMALL ? "0.55vw" : "1vw",
