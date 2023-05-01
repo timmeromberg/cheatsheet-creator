@@ -6,7 +6,7 @@ import {
   createEmptyKeyShortcuts,
   KeyShortcuts,
 } from "../../domain/Cheatsheet";
-import KeyShortcut, { KeyShortcutLabel } from "./KeyShortcut";
+import KeyShortcut, { FontSizeType, KeyShortcutLabel } from "./KeyShortcut";
 import React from "react";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 import { AMOUNT_OF_KEY_SPACE } from "../../pages/CheatsheetPage";
@@ -78,6 +78,20 @@ const Key = ({
   const hasTwoKeyShortcut =
     keyShortcuts?.shift || keyShortcuts?.alt || keyShortcuts?.ctrl;
 
+  const determineActiveAmountOfShortcutKeys = (): number => {
+    let active = 1; // always counting key only as active
+    if (hasTwoKeyShortcut) active = active + 3;
+    if (keyShortcuts?.altShift) active++;
+    if (keyShortcuts?.ctrlAlt) active++;
+    if (keyShortcuts?.shiftCtrl) active++;
+    return active;
+  };
+
+  const fontSizeType =
+    determineActiveAmountOfShortcutKeys() <= 4
+      ? FontSizeType.BIG
+      : FontSizeType.NORMAL;
+
   const data = {
     label: layoutKey.label,
     keyShortcuts: keyShortcuts
@@ -93,6 +107,7 @@ const Key = ({
       <KeyShortcut
         label={layoutKey.label}
         value={keyShortcuts?.keyOnly ? keyShortcuts.keyOnly : ""}
+        size={fontSizeType}
       />
       {keyShortcuts && (
         <div className={cx(classes.keyShortcuts)}>
@@ -100,6 +115,7 @@ const Key = ({
             <KeyShortcut
               label={KeyShortcutLabel.SHIFT}
               value={keyShortcuts.shift}
+              size={fontSizeType}
             />
           )}
 
@@ -107,6 +123,7 @@ const Key = ({
             <KeyShortcut
               label={KeyShortcutLabel.SHIFT_CTRL}
               value={keyShortcuts.shiftCtrl}
+              size={fontSizeType}
             />
           )}
 
@@ -114,6 +131,7 @@ const Key = ({
             <KeyShortcut
               label={KeyShortcutLabel.CTRL}
               value={keyShortcuts.ctrl}
+              size={fontSizeType}
             />
           )}
 
@@ -121,6 +139,7 @@ const Key = ({
             <KeyShortcut
               label={KeyShortcutLabel.CTRL_ALT}
               value={keyShortcuts.ctrlAlt}
+              size={fontSizeType}
             />
           )}
 
@@ -128,6 +147,7 @@ const Key = ({
             <KeyShortcut
               label={KeyShortcutLabel.ALT}
               value={keyShortcuts.alt}
+              size={fontSizeType}
             />
           )}
 
@@ -135,6 +155,7 @@ const Key = ({
             <KeyShortcut
               label={KeyShortcutLabel.ALT_SHIFT}
               value={keyShortcuts.altShift}
+              size={fontSizeType}
             />
           )}
         </div>

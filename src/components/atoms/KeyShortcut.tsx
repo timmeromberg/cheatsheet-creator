@@ -5,6 +5,7 @@ import { FontWeight } from "../../styles/fontType";
 export interface KeyShortcutProps {
   label: KeyShortcutLabel | string;
   value: string;
+  size: FontSizeType;
 }
 
 export enum KeyShortcutLabel {
@@ -16,9 +17,9 @@ export enum KeyShortcutLabel {
   ALT_SHIFT = "A+S:",
 }
 
-enum LabelFontSizeType {
+export enum FontSizeType {
   BIG = "BIG",
-  SMALL = "SMALL",
+  NORMAL = "NORMAL",
 }
 
 const getLabelColor = (label: KeyShortcutLabel | string): ColorHex => {
@@ -44,12 +45,13 @@ function isValueEnum(value: string): value is KeyShortcutLabel {
   return (Object.values(KeyShortcutLabel) as Array<string>).includes(value);
 }
 
-const KeyShortcut = ({ label, value }: KeyShortcutProps): JSX.Element => {
-  const isNotKeyOnly = isValueEnum(label);
+const KeyShortcut = ({ label, value, size }: KeyShortcutProps): JSX.Element => {
+  const isKeyOnlyShortcut = !isValueEnum(label);
 
   const { classes, cx } = useStyles({
     color: getLabelColor(label),
-    fontSizeType: isNotKeyOnly ? LabelFontSizeType.SMALL : LabelFontSizeType.BIG,
+    isKeyOnlyShortcut: isKeyOnlyShortcut,
+    size: size ? size : FontSizeType.NORMAL,
   });
 
   return (
@@ -60,26 +62,52 @@ const KeyShortcut = ({ label, value }: KeyShortcutProps): JSX.Element => {
   );
 };
 
+const determineFontSize = (
+  isKeyOnlyShortcut: boolean,
+  size: FontSizeType,
+  isLabel: boolean
+): string => {
+  if (isLabel && isKeyOnlyShortcut && size === FontSizeType.BIG) {
+    return "1vw";
+  } else if (isLabel && isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
+    return "1vw";
+  } else if (isLabel && !isKeyOnlyShortcut && size === FontSizeType.BIG) {
+    return "0.9vw";
+  } else if (isLabel && !isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
+    return "0.62vw";
+  } else if (!isLabel && size === FontSizeType.BIG) {
+    return "0.75vw";
+  } else if (!isLabel && size === FontSizeType.NORMAL) {
+    return "0.55vw";
+  } else {
+    return "0.33vw";
+  }
+};
+
 const useStyles = makeStyles<{
   color: ColorHex;
-  fontSizeType: LabelFontSizeType;
-}>()((_, { color, fontSizeType }) => ({
-  keyShortcut: {
-    //overflowWrap: 'break-all',
-    display: 'flex',
-    flexDirection: 'row',
-    lineHeight: "0.8",
-    letterSpacing: "-0.03vw",
-    color: color,
-  },
-  keyShortcutLabel: {
-    fontSize: fontSizeType === LabelFontSizeType.SMALL ? "0.55vw" : "1vw",
-    fontWeight: FontWeight.BOLD,
-  },
-  keyShortcutValue: {
-    fontSize: "0.5vw",
-    fontWeight: FontWeight.LIGHT,
-  },
-}));
+  isKeyOnlyShortcut: boolean;
+  size: FontSizeType;
+}>()((_, { color, isKeyOnlyShortcut, size }) => {
+  return {
+    keyShortcut: {
+      //overflowWrap: 'break-all',
+      display: "flex",
+      flexDirection: "row",
+      lineHeight: "0.8",
+      letterSpacing: "-0.03vw",
+      color: color,
+    },
+    keyShortcutLabel: {
+      fontSize: determineFontSize(isKeyOnlyShortcut, size, true),
+      fontWeight: FontWeight.BOLD,
+    },
+    keyShortcutValue: {
+      fontSize: determineFontSize(isKeyOnlyShortcut, size, false),
+      marginTop: "0.01vw",
+      fontWeight: FontWeight.LIGHT,
+    },
+  };
+});
 
 export default KeyShortcut;
