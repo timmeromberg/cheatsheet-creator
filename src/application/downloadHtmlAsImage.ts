@@ -4,8 +4,8 @@ const downloadComponentAsImage = async (id: string) => {
   try {
     const KEYBOARD_SHORTCUTS_CHEATSHEET_IMAGE_FILE_NAME =
       "keyboard-shortcuts-cheatsheet.png";
-    const targetWidth = 1720;
-    const targetHeight = 640;
+    const targetWidth = 1720 * 2;
+    const targetHeight = 640 * 2;
 
     const elementToCapture = document.getElementById(id);
     if (!elementToCapture) {
