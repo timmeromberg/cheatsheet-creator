@@ -10,7 +10,7 @@ import ErrorBoundary from "./application/ErrorBoundary";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>This is not the cheatsheetpage</div>,
+    element: <div>This is not the cheatsheet page.</div>,
   },
   {
     path: "/cheatsheet",

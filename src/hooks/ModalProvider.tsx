@@ -27,13 +27,13 @@ interface ModalProviderProps {
 }
 
 export const ModalProvider = ({ children }: ModalProviderProps) => {
-  const modalStates2: ModalStates = {
+  const initialModalStates: ModalStates = {
     [ModalKey.EDIT_CHEATSHEET_DESCRIPTION_MODAL]: { isOpen: false },
     [ModalKey.EDIT_SHORTCUTS_MODAL]: { isOpen: false },
     [ModalKey.LOAD_CHEATSHEET_MODAL]: { isOpen: false },
   };
 
-  const [modalStates, setModalStates] = useState<ModalStates>(modalStates2);
+  const [modalStates, setModalStates] = useState<ModalStates>(initialModalStates);
 
   const getModalState = (key: ModalKey) => modalStates[key];
 
