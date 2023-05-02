@@ -210,7 +210,8 @@ const useStyles = makeStyles<{
     width:
       height === LayoutKeyHeight.DOUBLE
         ? 100 /
-            (AMOUNT_OF_KEY_SPACE / (width === LayoutKeyWidth.DOUBLE ? 2 : 1)) +
+            (AMOUNT_OF_KEY_SPACE /
+              (width === LayoutKeyWidth.DOUBLE ? 1.94 : 0.97)) +
           "vw"
         : undefined,
 
