@@ -10,6 +10,7 @@ import { ModalProvider } from "./hooks/ModalProvider";
 import { Modals } from "./components/Modals";
 import GlobalStylesComponent from "./components/GlobalStylesComponent";
 import ErrorBoundary from "./application/ErrorBoundary";
+import WindowWidthCheck from "./components/WindowWidthCheck";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ErrorBoundary>
       <GlobalStylesComponent>
-        <ModalProvider>
-          <RouterProvider router={router} />
-          <Modals />
-        </ModalProvider>
+        <WindowWidthCheck minWidth={800}>
+          <ModalProvider>
+            <RouterProvider router={router} />
+            <Modals />
+          </ModalProvider>
+        </WindowWidthCheck>
       </GlobalStylesComponent>
     </ErrorBoundary>
   </React.StrictMode>
