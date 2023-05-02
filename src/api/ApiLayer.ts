@@ -108,7 +108,7 @@ export default class ApiLayer {
             {
               layoutKeys: [
                 { id: "Left_Ctrl", label: "Ctrl", grow: 2 },
-                { id: "Left_Opt", label: "" },
+                { id: "Left_Opt", label: "\u{263A}" },
                 { id: "Left_Alt", label: "Alt", grow: 2 },
                 { id: "Spacebar", label: "Spacebar", grow: 20 },
                 { id: "Right_Alt", label: "Alt", grow: 2 },
@@ -156,16 +156,16 @@ export default class ApiLayer {
             {
               layoutKeys: [
                 { size: 1 },
-                { id: "ArrowKeys_Up", label: "Up" },
+                { id: "ArrowKeys_Up", label: "\u{2191}" },
                 { size: 1 },
               ],
             },
             {
               layoutKeys: [
                 { size: 1 },
-                { id: "ArrowKeys_Left", label: "Lft" },
-                { id: "ArrowKeys_Down", label: "Dwn" },
-                { id: "ArrowKeys_Right", label: "Rgt" },
+                { id: "ArrowKeys_Left", label: "\u{2190}" },
+                { id: "ArrowKeys_Down", label: "\u{2193}" },
+                { id: "ArrowKeys_Right", label: "\u{2192}" },
                 { size: 1 },
               ],
             },
