@@ -47,6 +47,8 @@ const useStyles = makeStyles()((_) => ({
     color: ColorHex.WHITE,
     textAlign: "center",
     paddingTop: base(7),
+    paddingLeft: base(2),
+    paddingRight: base(2),
     fontSize: base(0.7),
     lineHeight: base(1),
     index: 1,

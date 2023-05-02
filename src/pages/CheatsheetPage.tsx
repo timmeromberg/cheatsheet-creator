@@ -12,7 +12,7 @@ import CheatsheetButtons from "../components/organisms/CheatsheetButtons";
 import BrandCollaboration from "../components/molecules/BrandCollaboration";
 import CheatsheetDescriptionComponent from "../components/atoms/CheatsheetDescriptionComponent";
 
-export const AMOUNT_OF_KEY_SPACE = 24;
+export const AMOUNT_OF_KEY_SPACE = 23;
 
 const CheatsheetPage = () => {
   const [keyboardLayout, setKeyboardLayout] = useState<KeyboardLayout>();

@@ -1,6 +1,10 @@
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
-import { LayoutKey } from "../../domain/KeyboardLayout";
+import {
+  LayoutKey,
+  LayoutKeyHeight,
+  LayoutKeyWidth,
+} from "../../domain/KeyboardLayout";
 import {
   Cheatsheet,
   createEmptyKeyShortcuts,
@@ -26,9 +30,13 @@ const Key = ({
 }: KeyProps): JSX.Element => {
   const { openModal, closeModal } = useModalContext();
 
+  const width = layoutKey.width ? layoutKey.width : LayoutKeyWidth.NORMAL;
+  const height = layoutKey.height ? layoutKey.height : LayoutKeyHeight.NORMAL;
+
   const { classes, cx } = useStyles({
     grow: layoutKey.grow,
-    size: layoutKey.size,
+    width: width,
+    height: height,
   });
 
   const key = ModalKey.EDIT_SHORTCUTS_MODAL;
@@ -100,80 +108,95 @@ const Key = ({
   };
 
   return (
-    <div
-      onClick={() => openModal(key, data, onSaveKeyShortcuts)}
-      className={cx(classes.key, "key")}
-    >
-      <KeyShortcut
-        label={layoutKey.label}
-        value={keyShortcuts?.keyOnly ? keyShortcuts.keyOnly : ""}
-        size={fontSizeType}
-      />
-      {keyShortcuts && (
-        <div className={cx(classes.keyShortcuts)}>
-          {hasTwoKeyShortcut && (
-            <KeyShortcut
-              label={KeyShortcutLabel.SHIFT}
-              value={keyShortcuts.shift}
-              size={fontSizeType}
-            />
-          )}
+    <div tabIndex={0} className={cx(classes.keyContainer)}>
+      <div
+        tabIndex={0}
+        onClick={() => openModal(key, data, onSaveKeyShortcuts)}
+        className={cx(classes.key, "key")}
+      >
+        <KeyShortcut
+          label={layoutKey.label}
+          value={keyShortcuts?.keyOnly ? keyShortcuts.keyOnly : ""}
+          size={fontSizeType}
+        />
+        {keyShortcuts && (
+          <div className={cx(classes.keyShortcuts)}>
+            {hasTwoKeyShortcut && (
+              <KeyShortcut
+                label={KeyShortcutLabel.SHIFT}
+                value={keyShortcuts.shift}
+                size={fontSizeType}
+              />
+            )}
 
-          {keyShortcuts.shiftCtrl && (
-            <KeyShortcut
-              label={KeyShortcutLabel.SHIFT_CTRL}
-              value={keyShortcuts.shiftCtrl}
-              size={fontSizeType}
-            />
-          )}
+            {keyShortcuts.shiftCtrl && (
+              <KeyShortcut
+                label={KeyShortcutLabel.SHIFT_CTRL}
+                value={keyShortcuts.shiftCtrl}
+                size={fontSizeType}
+              />
+            )}
 
-          {hasTwoKeyShortcut && (
-            <KeyShortcut
-              label={KeyShortcutLabel.CTRL}
-              value={keyShortcuts.ctrl}
-              size={fontSizeType}
-            />
-          )}
+            {hasTwoKeyShortcut && (
+              <KeyShortcut
+                label={KeyShortcutLabel.CTRL}
+                value={keyShortcuts.ctrl}
+                size={fontSizeType}
+              />
+            )}
 
-          {keyShortcuts.ctrlAlt && (
-            <KeyShortcut
-              label={KeyShortcutLabel.CTRL_ALT}
-              value={keyShortcuts.ctrlAlt}
-              size={fontSizeType}
-            />
-          )}
+            {keyShortcuts.ctrlAlt && (
+              <KeyShortcut
+                label={KeyShortcutLabel.CTRL_ALT}
+                value={keyShortcuts.ctrlAlt}
+                size={fontSizeType}
+              />
+            )}
 
-          {hasTwoKeyShortcut && (
-            <KeyShortcut
-              label={KeyShortcutLabel.ALT}
-              value={keyShortcuts.alt}
-              size={fontSizeType}
-            />
-          )}
+            {hasTwoKeyShortcut && (
+              <KeyShortcut
+                label={KeyShortcutLabel.ALT}
+                value={keyShortcuts.alt}
+                size={fontSizeType}
+              />
+            )}
 
-          {keyShortcuts.altShift && (
-            <KeyShortcut
-              label={KeyShortcutLabel.ALT_SHIFT}
-              value={keyShortcuts.altShift}
-              size={fontSizeType}
-            />
-          )}
-        </div>
-      )}
+            {keyShortcuts.altShift && (
+              <KeyShortcut
+                label={KeyShortcutLabel.ALT_SHIFT}
+                value={keyShortcuts.altShift}
+                size={fontSizeType}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 const useStyles = makeStyles<{
   grow?: number;
-  size?: number;
-}>()((theme, { grow, size }) => ({
+  width: LayoutKeyWidth;
+  height: LayoutKeyHeight;
+}>()((theme, { grow, width, height }) => ({
+  keyContainer: {
+    flexGrow: grow,
+    width:
+      100 / (AMOUNT_OF_KEY_SPACE / (width === LayoutKeyWidth.DOUBLE ? 2 : 1)) +
+      "vw",
+    "&:hover:not(:focus)": {
+      zIndex: 1,
+    },
+  },
   key: {
     paddingTop: "0.05vw",
     paddingLeft: "0.01vw",
     flexGrow: grow,
-    width: 100 / (AMOUNT_OF_KEY_SPACE / (size ? 2 : 1)) + "vw",
-    height: 100 / AMOUNT_OF_KEY_SPACE + "vw",
+    height:
+      100 /
+        (AMOUNT_OF_KEY_SPACE / (height === LayoutKeyHeight.DOUBLE ? 2.03 : 1)) +
+      "vw",
 
     backgroundColor: ColorHex.WHITE,
     border: "0.12vw solid " + ColorHex.GUNMETAL,
@@ -181,6 +204,15 @@ const useStyles = makeStyles<{
     marginTop: "0.06vw",
     marginBottom: "0.06vw",
     marginLeft: "0.12vw",
+    position: height === LayoutKeyHeight.DOUBLE ? "absolute" : undefined,
+    // This is kind of hacky, it will only work in certain cases.
+    // Currently it works, but it might not for other future layouts.
+    width:
+      height === LayoutKeyHeight.DOUBLE
+        ? 100 /
+            (AMOUNT_OF_KEY_SPACE / (width === LayoutKeyWidth.DOUBLE ? 2 : 1)) +
+          "vw"
+        : undefined,
 
     boxShadow: "rgba(0, 0, 0, 0.15) 0px -0.22vw 0.22vw 0px inset",
     cursor: "pointer",
@@ -188,7 +220,6 @@ const useStyles = makeStyles<{
       backgroundColor: ColorHex.AMBER,
       color: ColorHex.WHITE + " !important",
       transform: "scale(1.3)",
-      zIndex: 0,
     },
   },
   keyShortcuts: {

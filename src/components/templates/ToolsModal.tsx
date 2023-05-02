@@ -50,6 +50,7 @@ const useStyles = makeStyles()(() => ({
     position: "fixed",
     backgroundColor: hexToRgba(ColorHex.MIDNIGHT_BLUE, 0.85),
     inset: "0px",
+    zIndex: 2,
   },
   toolsModalTopTriangle: {
     width: 0,

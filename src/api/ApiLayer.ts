@@ -1,4 +1,8 @@
-import { KeyboardLayout } from "../domain/KeyboardLayout";
+import {
+  KeyboardLayout,
+  LayoutKeyHeight,
+  LayoutKeyWidth,
+} from "../domain/KeyboardLayout";
 
 export default class ApiLayer {
   fetchKeyboardLayout = (): KeyboardLayout => {
@@ -188,7 +192,7 @@ export default class ApiLayer {
                 { id: "Numpad_7", label: "7" },
                 { id: "Numpad_8", label: "8" },
                 { id: "Numpad_9", label: "9" },
-                { id: "Numpad_+", label: "+" },
+                { id: "Numpad_+", label: "+", height: LayoutKeyHeight.DOUBLE },
               ],
             },
             {
@@ -196,7 +200,6 @@ export default class ApiLayer {
                 { id: "Numpad_4", label: "4" },
                 { id: "Numpad_5", label: "5" },
                 { id: "Numpad_6", label: "6" },
-                { id: "Numpad_+", label: "+" },
               ],
             },
             {
@@ -204,14 +207,17 @@ export default class ApiLayer {
                 { id: "Numpad_1", label: "1" },
                 { id: "Numpad_2", label: "2" },
                 { id: "Numpad_3", label: "3" },
-                { id: "Numpad_Ent", label: "Ent" },
+                {
+                  id: "Numpad_Ent",
+                  label: "Ent",
+                  height: LayoutKeyHeight.DOUBLE,
+                },
               ],
             },
             {
               layoutKeys: [
-                { id: "Numpad_0", label: "0", size: 4 },
+                { id: "Numpad_0", label: "0", width: LayoutKeyWidth.DOUBLE },
                 { id: "Numpad_Del", label: "Del" },
-                { id: "Numpad_Ent", label: "Ent" },
               ],
             },
           ],
