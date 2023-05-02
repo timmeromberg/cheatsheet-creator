@@ -26,8 +26,8 @@ This tool serves as a marketing tool for a Video Game Art Design Studio called "
 ## Missing Features
 
 - Store cheatsheet in a database
-- Different keyboard layout
-- Small window and mobile versions
+- Different keyboard layouts
+- Small window size and mobile versions
 - Different color themes
 
 ## Running Locally
