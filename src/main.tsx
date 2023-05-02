@@ -1,7 +1,11 @@
 import React from "react";
 import * as ReactDOM from "react-dom/client";
 import CheatsheetPage from "./pages/CheatsheetPage";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import { ModalProvider } from "./hooks/ModalProvider";
 import { Modals } from "./components/Modals";
 import GlobalStylesComponent from "./components/GlobalStylesComponent";
@@ -10,7 +14,7 @@ import ErrorBoundary from "./application/ErrorBoundary";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>This is not the cheatsheet page.</div>,
+    element: <Navigate to="/cheatsheet" />,
   },
   {
     path: "/cheatsheet",
