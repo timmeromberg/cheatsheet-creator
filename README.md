@@ -12,6 +12,7 @@ This tool serves as a marketing tool for a Video Game Art Design Studio called "
 
 - [Built With](#built-with)
 - [Missing Features](#missing-features)
+- [Known Issues](#known-issues)
 - [Running Locally](#running-locally)
 - [License](#license)
 
@@ -29,6 +30,10 @@ This tool serves as a marketing tool for a Video Game Art Design Studio called "
 - Different keyboard layouts
 - Small window size and mobile versions
 - Different color themes
+
+## Known Issues
+
+- Double height layout keys bottom part does not highlight on hover, nor is clickable
 
 ## Running Locally
 
