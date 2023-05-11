@@ -100,31 +100,12 @@ const useStyles = makeStyles()(() => ({
     paddingBottom: base(0.5),
     backgroundColor: ColorHex.WHITE,
   },
-  cheatsheetButtonsLogo: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: base(0.5),
-    paddingLeft: base(0.5),
-    border: "5px solid " + ColorHex.MIDNIGHT_BLUE,
-  },
-  cheatsheetLogo: {
-    maxHeight: base(3),
-    padding: base(0.5),
-  },
-  cheatsheetButtons: {
-    padding: base(0.5),
-  },
+
   cheatsheetDescriptionBrandCollaboration: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     paddingRight: base(2),
-  },
-  cheatsheetDescription: {
-    color: ColorHex.LIGHT_GRAY,
-    whiteSpace: "pre-wrap",
   },
 }));
 

@@ -31,12 +31,14 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
     "react/jsx-uses-vars": "error",
-    "react-refresh/only-export-components": "off"
+    "react-refresh/only-export-components": "off",
+    "tss-unused-classes/unused-classes": "warn"
   },
   "plugins": [
     "react",
     "@typescript-eslint",
     "react-hooks",
-    "react-refresh"
+    "react-refresh",
+    "tss-unused-classes"
   ]
 }
