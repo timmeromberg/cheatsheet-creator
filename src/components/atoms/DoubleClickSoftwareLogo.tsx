@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
+import { DOUBLE_CLICK_URL, Link } from "./Link";
 
 interface DoubleClickSoftwareLogoProps {
   color: ColorHex.BLACK | ColorHex.WHITE;
@@ -10,10 +11,12 @@ const DoubleClickSoftwareLogo = ({ color }: DoubleClickSoftwareLogoProps) => {
   const { classes, cx } = useStyles({ color: color });
 
   return (
-    <div className={cx(classes.doubleClickSoftwareLogo)}>
-      <h3>{"<dc>"}</h3>
-      <div>doubleclick.software</div>
-    </div>
+    <Link url={DOUBLE_CLICK_URL}>
+      <div className={cx(classes.doubleClickSoftwareLogo)}>
+        <h3>{"<dc>"}</h3>
+        <div>doubleclick.software</div>
+      </div>
+    </Link>
   );
 };
 

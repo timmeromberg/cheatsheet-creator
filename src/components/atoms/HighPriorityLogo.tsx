@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";
+import { HIGH_PRIORITY_URL, Link } from "./Link";
 
 interface HighPriorityLogoProps {
   color: ColorHex.WHITE | ColorHex.BLACK;
@@ -16,12 +17,13 @@ const HighPriorityLogo = ({ color }: HighPriorityLogoProps) => {
       : "/images/HP_black2.png";
 
   return (
-    <img
-      onClick={() => console.log("A")}
-      className={cx(classes.highPriorityLogo)}
-      alt="High Priority Logo"
-      src={src}
-    />
+    <Link url={HIGH_PRIORITY_URL}>
+      <img
+        className={cx(classes.highPriorityLogo)}
+        alt="High Priority Logo"
+        src={src}
+      />
+    </Link>
   );
 };
 
