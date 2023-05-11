@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";
-import { m, xl } from "../../styles/queries";
+import { m } from "../../styles/queries";
 
 export enum ButtonType {
   NORMAL = "NORMAL",
@@ -53,10 +53,10 @@ const useStyles = makeStyles<{ size: ButtonSize; type: ButtonType }>()(
       color: ColorHex.WHITE,
       border:
         "5px solid " +
-        (type === ButtonType.NORMAL ? ColorHex.AMBER : ColorHex.MAROON),
+        (type === ButtonType.NORMAL ? ColorHex.AMBER : ColorHex.BRIGHT_RED),
       "&:hover": {
         backgroundColor:
-          type === ButtonType.NORMAL ? ColorHex.AMBER : ColorHex.MAROON,
+          type === ButtonType.NORMAL ? ColorHex.AMBER : ColorHex.BRIGHT_RED,
       },
       "&:active": {
         backgroundColor: ColorHex.WHITE,

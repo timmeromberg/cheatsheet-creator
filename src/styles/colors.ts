@@ -12,6 +12,7 @@ export enum ColorHex {
   LIME_GREEN = "#008000",
   NAVY_BLUE = "#000080",
   DIM_GRAY = "#666666",
+  BRIGHT_RED = "#ff4060",
 }
 
 export function hexToRgba(hex: string, alpha: number): string {
