@@ -4,6 +4,7 @@ import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";
 import { base } from "../../styles/base";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
+import NewLinedSpan from "./NewLinedSpan";
 
 interface CheatsheetDescriptionProps {
   cheatsheet: Cheatsheet;
@@ -45,23 +46,23 @@ const CheatsheetDescriptionComponent = ({
           <span className={cx(classes.cheatsheetDescriptionLabel)}>
             Shift:{" "}
           </span>
-          {description.shift ? description.shift : ""}
+          <NewLinedSpan value={description.shift} />
         </p>
         <p>
           <span className={cx(classes.cheatsheetDescriptionLabel)}>
             Control:{" "}
           </span>
-          {description.ctrl ? description.ctrl : ""}
+          <NewLinedSpan value={description.ctrl} />
         </p>
         <p>
           <span className={cx(classes.cheatsheetDescriptionLabel)}>Alt: </span>
-          {description.alt ? description.alt : ""}
+          <NewLinedSpan value={description.alt} />
         </p>
         <p>
           <span className={cx(classes.cheatsheetDescriptionLabel)}>
             Notes:{" "}
           </span>
-          {description.notes ? description.notes : ""}
+          <NewLinedSpan value={description.notes} />
         </p>
       </div>
     </>
@@ -74,8 +75,8 @@ const useStyles = makeStyles()(() => ({
     fontWeight: FontWeight.LIGHT,
     marginTop: base(0.3),
     lineHeight: base(0.7),
-    cursor: 'pointer',
-    width: '100%',
+    cursor: "pointer",
+    width: "100%",
     border: "0.12vw solid " + ColorHex.WHITE,
     borderRadius: "0.3vw",
     "&:hover:not(:focus)": {

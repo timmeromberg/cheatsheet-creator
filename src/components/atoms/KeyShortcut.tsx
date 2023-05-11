@@ -1,6 +1,7 @@
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";
+import NewLinedSpan from "./NewLinedSpan";
 
 export interface KeyShortcutProps {
   label: KeyShortcutLabel | string;
@@ -57,7 +58,7 @@ const KeyShortcut = ({ label, value, size }: KeyShortcutProps): JSX.Element => {
   return (
     <div className={cx(classes.keyShortcut)}>
       <span className={cx(classes.keyShortcutLabel)}>{label}</span>
-      <span className={cx(classes.keyShortcutValue)}>{value}</span>
+      <NewLinedSpan className={cx(classes.keyShortcutValue)} value={value} />
     </div>
   );
 };
