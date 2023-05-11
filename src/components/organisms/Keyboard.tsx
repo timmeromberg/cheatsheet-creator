@@ -36,6 +36,7 @@ const useStyles = makeStyles()(() => ({
     backgroundColor: ColorHex.WHITE,
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 }));
 

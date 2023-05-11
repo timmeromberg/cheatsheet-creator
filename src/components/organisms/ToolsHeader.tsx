@@ -4,12 +4,18 @@ import { base } from "../../styles/base";
 import BrandCollaboration from "../molecules/BrandCollaboration";
 import ToolTitleWithBrands from "../atoms/ToolTitleWithBrands";
 import { ColorHex } from "../../styles/colors";
+import {
+  BUTTONS_HORIZONTAL_PADDING,
+  BUTTONS_HORIZONTAL_PADDING_M,
+  BUTTONS_HORIZONTAL_PADDING_REDUCTION_XL,
+} from "./CheatsheetButtons";
+import { m, xl } from "../../styles/queries";
 
-interface ToolHeaderProps {
+interface ToolsHeaderProps {
   title: string;
 }
 
-const ToolHeader = ({ title }: ToolHeaderProps) => {
+const ToolsHeader = ({ title }: ToolsHeaderProps) => {
   const { classes, cx } = useStyles();
 
   return (
@@ -24,14 +30,20 @@ const useStyles = makeStyles()(() => ({
   titleBar: {
     paddingTop: base(0.2),
     paddingBottom: base(0.2),
+    paddingLeft: base(BUTTONS_HORIZONTAL_PADDING - 0.45),
+    paddingRight: base(BUTTONS_HORIZONTAL_PADDING),
+    [m]: {
+      paddingLeft: base(BUTTONS_HORIZONTAL_PADDING_M - 0.45),
+      paddingRight: base(BUTTONS_HORIZONTAL_PADDING_M),
+    },
     display: "flex",
     flexDirection: "row",
     gap: base(0.5),
     width: "100%",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: ColorHex.DARK_BLUE,
   },
 }));
 
-export default ToolHeader;
+export default ToolsHeader;

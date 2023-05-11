@@ -7,6 +7,10 @@ import SaveCheatsheetDataButton from "../atoms/SaveCheatsheetDataButton";
 import { Cheatsheet } from "../../domain/Cheatsheet";
 import LoadCheatsheetDataButton from "../atoms/LoadCheatsheetDataButton";
 import ResetCheatsheetDataButton from "../atoms/ResetCheatsheetDataButton";
+import { m, xl } from "../../styles/queries";
+
+export const BUTTONS_HORIZONTAL_PADDING = 2.5;
+export const BUTTONS_HORIZONTAL_PADDING_M = 0.5;
 
 interface CheatsheetButtonsProps {
   downloadId: string;
@@ -37,11 +41,18 @@ const useStyles = makeStyles()(() => ({
   cheatsheetButtons: {
     display: "flex",
     flexDirection: "row",
-    gap: base(5),
+    justifyContent: "space-between",
+    width: "100%",
+    gap: base(4),
     alignItems: "center",
-    justifyContent: "space-evenly",
-    paddingTop: base(1),
+    paddingTop: base(0.6),
     paddingBottom: base(0.35),
+    paddingLeft: base(BUTTONS_HORIZONTAL_PADDING),
+    paddingRight: base(BUTTONS_HORIZONTAL_PADDING),
+    [m]: {
+      paddingLeft: base(BUTTONS_HORIZONTAL_PADDING_M),
+      paddingRight: base(BUTTONS_HORIZONTAL_PADDING_M),
+    },
     backgroundColor: ColorHex.DARK_BLUE,
   },
   cheatsheetSaveLoadButtons: {

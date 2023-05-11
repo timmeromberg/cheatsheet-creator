@@ -51,7 +51,12 @@ export default class ApiLayer {
                 { id: "0", label: "0" },
                 { id: "-", label: "-" },
                 { id: "+", label: "+" },
-                { id: "BkS", label: "BkS", grow: 2 },
+                {
+                  id: "BkS",
+                  label: "BkS",
+                  grow: 2,
+                  width: LayoutKeyWidth.DOUBLE,
+                },
               ],
             },
             {
@@ -136,7 +141,7 @@ export default class ApiLayer {
               layoutKeys: [
                 { size: 1 },
                 { id: "Ins", label: "Ins" },
-                { id: "Home", label: "Home" },
+                { id: "Home", label: "Ho." },
                 { id: "Pgu", label: "Pgu" },
                 { size: 1 },
               ],

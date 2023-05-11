@@ -34,7 +34,6 @@ const useStyles = makeStyles()(() => ({
   keyboardColumn: {
     display: "flex",
     flexDirection: "column",
-    flexGrow: 1,
   },
 }));
 

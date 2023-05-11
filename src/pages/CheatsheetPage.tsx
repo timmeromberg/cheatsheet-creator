@@ -7,7 +7,7 @@ import { KeyboardLayout } from "../domain/KeyboardLayout";
 import LocalDataStorage from "../api/LocalDataStorage";
 import ApiLayer from "../api/ApiLayer";
 import { ColorHex } from "../styles/colors";
-import ToolHeader from "../components/organisms/ToolHeader";
+import ToolsHeader from "../components/organisms/ToolsHeader";
 import CheatsheetButtons from "../components/organisms/CheatsheetButtons";
 import BrandCollaboration from "../components/molecules/BrandCollaboration";
 import CheatsheetDescriptionComponent from "../components/atoms/CheatsheetDescriptionComponent";
@@ -53,7 +53,7 @@ const CheatsheetPage = () => {
     <>
       {keyboardLayout && cheatsheet && (
         <div className={cx(classes.cheatsheet)}>
-          <ToolHeader title={"Shortcut Cheatsheet Creator"} />
+          <ToolsHeader title={"Shortcut Cheatsheet Creator"} />
 
           <div id={downloadId} className={cx(classes.cheatsheetKeyboard)}>
             <Keyboard
