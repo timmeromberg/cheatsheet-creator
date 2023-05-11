@@ -1,4 +1,3 @@
-import React from "react";
 import Button, { ButtonSize } from "../atoms/Button";
 import ModalButtons from "../molecules/ModalButtons";
 import ToolsModal from "../templates/ToolsModal";

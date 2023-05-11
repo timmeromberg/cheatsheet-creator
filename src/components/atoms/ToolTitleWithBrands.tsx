@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";
@@ -38,7 +37,7 @@ const ToolTitleWithBrands = ({ title }: ToolTitleWithBrandsProps) => {
         className={cx(classes.toolTitleWithBrandsFeedback)}
         url={FEEDBACK_MAIL_URL}
       >
-        Send us feedback
+        <span>Send us feedback</span>
       </Link>
     </div>
   );

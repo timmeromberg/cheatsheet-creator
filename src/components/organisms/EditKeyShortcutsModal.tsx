@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { KeyShortcuts } from "../../domain/Cheatsheet";
 import ModalLabeledInput, {
   ModalLabeledInputSize,

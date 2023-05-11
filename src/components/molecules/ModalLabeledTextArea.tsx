@@ -1,4 +1,3 @@
-import React from "react";
 import ModalInputLabel from "../atoms/ModalInputLabel";
 import ModalTextArea from "../atoms/ModalTextArea";
 import { makeStyles } from "../../styles/theme";

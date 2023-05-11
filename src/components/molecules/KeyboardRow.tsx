@@ -23,11 +23,9 @@ const KeyboardRow = ({
         isLayoutKey(layoutItem) ? (
           <Key
             key={index}
-            keyShortcuts={
-              cheatsheet.keyShortcuts.find(
-                (shortcut) => shortcut.id === (layoutItem as LayoutKey).id
-              )!
-            }
+            keyShortcuts={cheatsheet.keyShortcuts.find(
+              (shortcut) => shortcut.id === (layoutItem as LayoutKey).id
+            )}
             layoutKey={layoutItem}
             cheatsheet={cheatsheet}
             saveCheatsheet={saveCheatsheet}

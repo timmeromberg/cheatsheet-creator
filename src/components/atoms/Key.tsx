@@ -11,7 +11,6 @@ import {
   KeyShortcuts,
 } from "../../domain/Cheatsheet";
 import KeyShortcut, { FontSizeType, KeyShortcutLabel } from "./KeyShortcut";
-import React from "react";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 import { AMOUNT_OF_KEY_SPACE } from "../../pages/CheatsheetPage";
 
@@ -179,7 +178,7 @@ const useStyles = makeStyles<{
   grow?: number;
   width: LayoutKeyWidth;
   height: LayoutKeyHeight;
-}>()((theme, { grow, width, height }) => ({
+}>()((_, { grow, width, height }) => ({
   keyContainer: {
     flexGrow: grow,
     width:

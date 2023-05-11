@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button, { ButtonSize } from "../atoms/Button";
 import ModalForm from "../molecules/ModalForm";
 import ModalButtons from "../molecules/ModalButtons";

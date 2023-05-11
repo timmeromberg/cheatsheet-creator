@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";
@@ -23,7 +22,7 @@ export interface ButtonProps {
 
 const Button = ({ label, onClick, size, type }: ButtonProps): JSX.Element => {
   const type_ = type ? type : ButtonType.NORMAL;
-  const size_ = size ? size : ButtonType.NORMAL;
+  const size_ = size ? size : ButtonSize.NORMAL;
   const { classes, cx } = useStyles({ size: size_, type: type_ });
 
   return (

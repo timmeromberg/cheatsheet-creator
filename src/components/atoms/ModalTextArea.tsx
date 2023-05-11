@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";

@@ -1,5 +1,4 @@
 import { makeStyles } from "../styles/theme";
-import React from "react";
 import { ColorHex } from "../styles/colors";
 import { base } from "../styles/base";
 

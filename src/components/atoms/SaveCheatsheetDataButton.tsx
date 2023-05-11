@@ -1,4 +1,3 @@
-import React from "react";
 import Button, { ButtonSize } from "./Button";
 import { Cheatsheet } from "../../domain/Cheatsheet";
 

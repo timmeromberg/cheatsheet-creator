@@ -15,7 +15,7 @@ const Filler = ({ layoutFiller }: FillerProps): JSX.Element => {
 
 const useStyles = makeStyles<{
   size?: number;
-}>()((theme, { size }) => ({
+}>()((_, { size }) => ({
   key: {
     height: 100 / (AMOUNT_OF_KEY_SPACE * (size ? size : 1)) + "vw",
     flexGrow: 1,

@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ColorHex } from "../../styles/colors";
@@ -7,7 +6,7 @@ import SaveCheatsheetDataButton from "../atoms/SaveCheatsheetDataButton";
 import { Cheatsheet } from "../../domain/Cheatsheet";
 import LoadCheatsheetDataButton from "../atoms/LoadCheatsheetDataButton";
 import ResetCheatsheetDataButton from "../atoms/ResetCheatsheetDataButton";
-import { m, xl } from "../../styles/queries";
+import { m } from "../../styles/queries";
 
 export const BUTTONS_HORIZONTAL_PADDING = 2.5;
 export const BUTTONS_HORIZONTAL_PADDING_M = 0.5;

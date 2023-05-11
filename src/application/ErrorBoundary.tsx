@@ -17,7 +17,11 @@ const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => {
     ) => {
       setHasError(true);
       // You can log the error to an error reporting service here
+      console.error(event);
       console.error(error);
+      console.error(lineno);
+      console.error(source);
+      console.error(colno);
     };
 
     window.addEventListener("error", errorHandler);

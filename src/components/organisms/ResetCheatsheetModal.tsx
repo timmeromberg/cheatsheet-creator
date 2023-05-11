@@ -1,4 +1,3 @@
-import React from "react";
 import Button, { ButtonSize, ButtonType } from "../atoms/Button";
 import ModalButtons from "../molecules/ModalButtons";
 import ToolsModal from "../templates/ToolsModal";
@@ -17,18 +16,25 @@ const ResetCheatsheetModal = (): JSX.Element => {
   const { cx, classes } = useStyles();
 
   const resetCheatsheet = () => {
-    const cheatsheet: Cheatsheet = createEmptyCheatsheet()
-    onSave(cheatsheet)
-    closeModal(key)
+    const cheatsheet: Cheatsheet = createEmptyCheatsheet();
+    onSave(cheatsheet);
+    closeModal(key);
   };
 
   return (
     <ToolsModal modalKey={key}>
       <ModalForm>
-        <h2 className={cx(classes.resetCheatsheetModalTitle)}>Reset Cheatsheet</h2>
+        <h2 className={cx(classes.resetCheatsheetModalTitle)}>
+          Reset Cheatsheet
+        </h2>
         <div className={cx(classes.resetCheatsheetModalDescription)}>
-          <span>WARNING: All your shortcuts will be deleted! This can not be undone! </span>
-          <span>It might be wise to make a backup using the the Save cheatsheet button first.</span>
+          <span>
+            WARNING: All your shortcuts will be deleted! This can not be undone!{" "}
+          </span>
+          <span>
+            It might be wise to make a backup using the the Save cheatsheet
+            button first.
+          </span>
           <span>Are you still sure you want to reset your cheatsheet?</span>
         </div>
       </ModalForm>
@@ -54,10 +60,10 @@ const useStyles = makeStyles()(() => ({
     color: ColorHex.WHITE,
   },
   resetCheatsheetModalDescription: {
-    lineHeight: '1.2',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: base(0.3)
+    lineHeight: "1.2",
+    display: "flex",
+    flexDirection: "column",
+    gap: base(0.3),
   },
 }));
 

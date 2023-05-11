@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import BrandCollaboration from "../molecules/BrandCollaboration";
@@ -7,9 +6,8 @@ import { ColorHex } from "../../styles/colors";
 import {
   BUTTONS_HORIZONTAL_PADDING,
   BUTTONS_HORIZONTAL_PADDING_M,
-  BUTTONS_HORIZONTAL_PADDING_REDUCTION_XL,
 } from "./CheatsheetButtons";
-import { m, xl } from "../../styles/queries";
+import { m } from "../../styles/queries";
 
 interface ToolsHeaderProps {
   title: string;

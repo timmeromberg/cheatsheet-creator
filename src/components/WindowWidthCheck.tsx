@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "../styles/theme";
 import { base, pixels } from "../styles/base";
-import { m } from "../styles/queries";
 import { ColorHex } from "../styles/colors";
-import { ButtonSize, ButtonType } from "./atoms/Button";
 
 interface WindowWidthCheckProps {
   minWidth: number;
@@ -42,7 +40,7 @@ const WindowWidthCheck = ({ children, minWidth }: WindowWidthCheckProps) => {
   );
 };
 
-const useStyles = makeStyles()((_) => ({
+const useStyles = makeStyles()(() => ({
   windowWidthCheck: {
     color: ColorHex.WHITE,
     textAlign: "center",

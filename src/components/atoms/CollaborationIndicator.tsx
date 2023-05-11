@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";

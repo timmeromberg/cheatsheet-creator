@@ -1,4 +1,3 @@
-import React from "react";
 import Modal from "react-modal";
 import { makeStyles } from "../../styles/theme";
 import { base, pixels } from "../../styles/base";
