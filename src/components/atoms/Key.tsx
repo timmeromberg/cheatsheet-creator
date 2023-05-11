@@ -197,7 +197,6 @@ const useStyles = makeStyles<{
       100 /
         (AMOUNT_OF_KEY_SPACE / (height === LayoutKeyHeight.DOUBLE ? 2.03 : 1)) +
       "vw",
-
     backgroundColor: ColorHex.WHITE,
     border: "0.12vw solid " + ColorHex.GUNMETAL,
     borderRadius: "0.3vw",
@@ -206,7 +205,7 @@ const useStyles = makeStyles<{
     marginLeft: "0.12vw",
     position: height === LayoutKeyHeight.DOUBLE ? "absolute" : undefined,
     // This is kind of hacky, it will only work in certain cases.
-    // Currently it works, but it might not for other future layouts.
+    // Currently, it works, but it might not for other future layouts.
     width:
       height === LayoutKeyHeight.DOUBLE
         ? 100 /
@@ -217,7 +216,7 @@ const useStyles = makeStyles<{
 
     boxShadow: "rgba(0, 0, 0, 0.15) 0px -0.22vw 0.22vw 0px inset",
     cursor: "pointer",
-    "&:hover:not(:focus)": {
+    "&:hover": {
       backgroundColor: ColorHex.AMBER,
       color: ColorHex.WHITE + " !important",
       transform: "scale(1.3)",
