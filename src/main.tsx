@@ -21,6 +21,10 @@ const router = createBrowserRouter([
     path: "/cheatsheet",
     element: <CheatsheetPage />,
   },
+  {
+    path: "/index.html",
+    element: <CheatsheetPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
