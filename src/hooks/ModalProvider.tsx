@@ -5,6 +5,7 @@ export enum ModalKey {
   EDIT_SHORTCUTS_MODAL = "EDIT_SHORTCUTS_MODAL",
   LOAD_CHEATSHEET_MODAL = "LOAD_CHEATSHEET_MODAL",
   RESET_CHEATSHEET_MODAL = "RESET_CHEATSHEET_MODAL",
+  FEEDBACK_MODAL = "FEEDBACK_MODAL",
 }
 
 export interface ModalState {
@@ -33,9 +34,11 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
     [ModalKey.EDIT_SHORTCUTS_MODAL]: { isOpen: false },
     [ModalKey.LOAD_CHEATSHEET_MODAL]: { isOpen: false },
     [ModalKey.RESET_CHEATSHEET_MODAL]: { isOpen: false },
+    [ModalKey.FEEDBACK_MODAL]: { isOpen: false },
   };
 
-  const [modalStates, setModalStates] = useState<ModalStates>(initialModalStates);
+  const [modalStates, setModalStates] =
+    useState<ModalStates>(initialModalStates);
 
   const getModalState = (key: ModalKey) => modalStates[key];
 
