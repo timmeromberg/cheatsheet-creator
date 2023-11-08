@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button, { ButtonSize } from "../atoms/Button";
 import ModalButtons from "../molecules/ModalButtons";
 import ToolsModal from "../templates/ToolsModal";
@@ -17,38 +17,49 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   const modalState = getModalState(key);
   const onSave = modalState.onSave as (cheatsheet: Cheatsheet) => void;
   const { cx, classes } = useStyles();
-
-  const presetFiles = import.meta.glob("./../../../public/assets/presets/*.*");
+  const [presets, setPresets] = useState<string[]>([]);
 
   const presetColumnLength = 7;
 
-  const handlePresetClick = async (importPresetFunction: unknown) => {
+  const port = window.location.port;
+  console.log("port:", port);
+
+  const assetsPath =
+    (port != "5175" ? "/cheatsheet/" : "") + "/assets/presets/";
+
+  useEffect(() => {
+    const fetchPresets = async () => {
+      try {
+        const response = await fetch(assetsPath + "/files.json");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const files: string[] = await response.json();
+        setPresets(files);
+      } catch (error) {
+        console.error("Error fetching presets:", error);
+      }
+    };
+
+    fetchPresets().then(() => {
+      return "";
+    });
+  }, []);
+
+  const handlePresetClick = async (presetName: string) => {
     try {
-      const module = await importPresetFunction();
-      const content = module.default;
-      onSave(content);
+      const response = await fetch(assetsPath + `/${presetName}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const cheatsheet = await response.json();
+      // Presumably you would do something with the cheatsheet here
+      console.log("Loaded Cheatsheet:", cheatsheet);
+      onSave(cheatsheet);
       closeModal(key);
     } catch (error) {
       console.error("Error loading preset:", error);
     }
-  };
-
-  const generateButtons = () => {
-    return Object.entries(presetFiles).map(
-      ([filePath, importPresetFunction]) => {
-        // Extract the file name without the extension
-        const fileName =
-          filePath.split("/").pop()?.split(".").slice(0, -1).join("") || "";
-        return (
-          <LoadPresetButton
-            key={fileName}
-            title={fileName}
-            // Pass the function to import the content of the preset file
-            onClick={() => handlePresetClick(importPresetFunction)}
-          />
-        );
-      }
-    );
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +83,13 @@ const EditKeyShortcutsModal = (): JSX.Element => {
     }
   };
 
-  const buttons = generateButtons();
+  const presetButtons = presets.map((presetName, index) => (
+    <LoadPresetButton
+      key={index}
+      title={presetName.replace(".json", "")}
+      onClick={() => handlePresetClick(presetName)}
+    />
+  ));
 
   return (
     <ToolsModal modalKey={key}>
@@ -80,10 +97,10 @@ const EditKeyShortcutsModal = (): JSX.Element => {
         <h2 className={cx(classes.loadCheatsheetModalTitle)}>Select Preset</h2>
         <div className={cx(classes.loadCheatSheetModalButtons)}>
           <div className={cx(classes.loadCheatSheetModalButtonsColumn)}>
-            {buttons.slice(0, presetColumnLength)}
+            {presetButtons.slice(0, presetColumnLength)}
           </div>
           <div className={cx(classes.loadCheatSheetModalButtonsColumn)}>
-            {buttons.slice(presetColumnLength, presetColumnLength * 2)}
+            {presetButtons.slice(presetColumnLength, presetColumnLength * 2)}
           </div>
         </div>
 
