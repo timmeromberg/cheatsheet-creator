@@ -30,7 +30,7 @@ const ToolsModal = ({ modalKey, children }: ToolsModalProps): JSX.Element => {
 
 const useStyles = makeStyles()(() => ({
   toolsModal: {
-    height: base(16),
+    height: base(17),
     width: base(16),
     backgroundColor: ColorHex.DARK_BLUE,
     color: ColorHex.LIGHT_GRAY,

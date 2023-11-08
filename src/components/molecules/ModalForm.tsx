@@ -15,7 +15,7 @@ const useStyles = makeStyles()(() => ({
   modalForm: {
     display: "flex",
     flexDirection: "column",
-    gap: base(1),
+    gap: base(0.4),
   },
 }));
 

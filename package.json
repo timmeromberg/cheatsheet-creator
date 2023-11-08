@@ -18,6 +18,7 @@
     "@types/react-dom": "18.0.11",
     "eslint-plugin-tss-unused-classes": "^0.0.4",
     "html2canvas": "^1.4.1",
+    "list-react-files": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
@@ -40,6 +41,7 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "prettier": "^2.8.7",
     "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "vite": "^4.3.2",
+    "vite-plugin-glob": "^0.3.2"
   }
 }

@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import checker from "vite-plugin-checker";
 //import viteCompression from "vite-plugin-compression";
+import GlobPlugin from "vite-plugin-glob";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,10 @@ export default defineConfig({
       },
     }),
     //viteCompression(),
+    GlobPlugin({
+      // enable to let this plugin interpret `import.meta.glob`
+      // takeover: true,
+    }),
   ],
   server: {
     port: 5175,
