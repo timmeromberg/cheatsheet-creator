@@ -11,12 +11,16 @@ import ToolsHeader from "../components/organisms/ToolsHeader";
 import CheatsheetButtons from "../components/organisms/CheatsheetButtons";
 import BrandCollaboration from "../components/molecules/BrandCollaboration";
 import CheatsheetDescriptionComponent from "../components/atoms/CheatsheetDescriptionComponent";
+import { ModalKey, useModalContext } from "../hooks/ModalProvider";
 
 export const AMOUNT_OF_KEY_SPACE = 23;
 
 const CheatsheetPage = () => {
   const [keyboardLayout, setKeyboardLayout] = useState<KeyboardLayout>();
   const [cheatsheet, setCheatsheet] = useState<Cheatsheet>();
+
+  const { openModal } = useModalContext();
+
   const downloadId = "cheatsheet";
 
   useEffect(() => {
@@ -27,7 +31,12 @@ const CheatsheetPage = () => {
 
       const localDataStorage = new LocalDataStorage();
       const cheatsheet = await localDataStorage.fetchCheatsheet();
+      console.log(cheatsheet?.keyShortcuts.length == 0);
       setCheatsheet(cheatsheet);
+
+      if (cheatsheet?.keyShortcuts.length == 0) {
+        openModal(ModalKey.LOAD_CHEATSHEET_MODAL, null, saveCheatsheet);
+      }
     }
     fetchData().catch((error) => {
       console.error("Error fetching data:", error);
