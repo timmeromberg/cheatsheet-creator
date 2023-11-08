@@ -1,4 +1,4 @@
-import Button, { ButtonSize } from "./Button";
+import Button, { ButtonSize, ButtonType } from "./Button";
 import { Cheatsheet } from "../../domain/Cheatsheet";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 
@@ -15,7 +15,8 @@ const ResetCheatsheetDataButton = ({
     <Button
       size={ButtonSize.BIG}
       onClick={() => openModal(ModalKey.RESET_CHEATSHEET_MODAL, null, onSave)}
-      label={"Reset cheatsheet"}
+      label={"Reset"}
+      type={ButtonType.WARNING}
     />
   );
 };

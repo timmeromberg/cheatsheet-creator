@@ -27,7 +27,7 @@ const SaveCheatsheetDataButton = ({
     <Button
       size={ButtonSize.BIG}
       onClick={() => saveCheatsheetData()}
-      label={"Save cheatsheet"}
+      label={"Save Preset"}
     />
   );
 };

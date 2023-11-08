@@ -15,7 +15,7 @@ const LoadCheatsheetDataButton = ({
     <Button
       size={ButtonSize.BIG}
       onClick={() => openModal(ModalKey.LOAD_CHEATSHEET_MODAL, null, onSave)}
-      label={"Load cheatsheet"}
+      label={"Load Preset"}
     />
   );
 };
