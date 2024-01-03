@@ -86,23 +86,23 @@ const Key = ({
 
   // const hasTwoKeyShortcut =
   //   keyShortcuts?.shift || keyShortcuts?.alt || keyShortcuts?.ctrl;
+  //
+  // const determineActiveAmountOfShortcutKeys = (): number => {
+  //   let active = 1; // always counting key only as active
+  //   //if (hasTwoKeyShortcut) active = active + 1;
+  //   if (keyShortcuts?.alt.value) active++;
+  //   if (keyShortcuts?.shift.value) active++;
+  //   if (keyShortcuts?.ctrl.value) active++;
+  //   if (keyShortcuts?.altShift.value) active++;
+  //   if (keyShortcuts?.ctrlAlt.value) active++;
+  //   if (keyShortcuts?.shiftCtrl.value) active++;
+  //   return active;
+  // };
 
-  const determineActiveAmountOfShortcutKeys = (): number => {
-    let active = 1; // always counting key only as active
-    //if (hasTwoKeyShortcut) active = active + 1;
-    if (keyShortcuts?.alt.value) active++;
-    if (keyShortcuts?.shift.value) active++;
-    if (keyShortcuts?.ctrl.value) active++;
-    if (keyShortcuts?.altShift.value) active++;
-    if (keyShortcuts?.ctrlAlt.value) active++;
-    if (keyShortcuts?.shiftCtrl.value) active++;
-    return active;
-  };
-
-  const fontSizeType =
-    determineActiveAmountOfShortcutKeys() <= 4
-      ? FontSizeType.BIG
-      : FontSizeType.NORMAL;
+  const fontSizeType = FontSizeType.BIG;
+  // determineActiveAmountOfShortcutKeys() <= 4
+  //   ? FontSizeType.BIG
+  //   : FontSizeType.NORMAL;
 
   const data = {
     label: layoutKey.label,

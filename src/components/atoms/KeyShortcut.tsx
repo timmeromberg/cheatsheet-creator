@@ -14,7 +14,7 @@ export enum KeyShortcutLabel {
   SHIFT = "S:",
   CTRL = "C:",
   ALT = "A:",
-  SHIFT_CTRL = "S+A:",
+  SHIFT_CTRL = "S+C:",
   CTRL_ALT = "C+A:",
   ALT_SHIFT = "A+S:",
 }
@@ -79,9 +79,9 @@ const KeyShortcut = ({
 
 const determineFontSize = (size: FontSizeType): string => {
   if (size === FontSizeType.BIG) {
-    return "0.75vw";
+    return "0.65vw";
   } else if (size === FontSizeType.NORMAL) {
-    return "0.55vw";
+    return "0.50vw";
   } else {
     return "0.33vw";
   }
@@ -96,9 +96,9 @@ const determineLabelFontSize = (
   } else if (isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
     return "1vw";
   } else if (!isKeyOnlyShortcut && size === FontSizeType.BIG) {
-    return "0.75vw";
+    return "0.65vw";
   } else if (!isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
-    return "0.55vw";
+    return "0.50vw";
   } else {
     return "0.33vw";
   }
