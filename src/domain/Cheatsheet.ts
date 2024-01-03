@@ -12,25 +12,39 @@ export interface CheatsheetDescription {
 
 export interface KeyShortcuts {
   id: string;
-  keyOnly: string;
-  shift: string;
-  shiftCtrl: string;
-  ctrl: string;
-  ctrlAlt: string;
-  alt: string;
-  altShift: string;
+  keyOnly: KeyShortcut;
+  shift: KeyShortcut;
+  shiftCtrl: KeyShortcut;
+  ctrl: KeyShortcut;
+  ctrlAlt: KeyShortcut;
+  alt: KeyShortcut;
+  altShift: KeyShortcut;
+}
+
+export interface KeyShortcut {
+  value: string;
+  isBold: boolean;
+  isSmall: boolean;
 }
 
 export const createEmptyKeyShortcuts = (id: string): KeyShortcuts => {
   return {
     id: id,
-    keyOnly: "",
-    shift: "",
-    shiftCtrl: "",
-    ctrl: "",
-    ctrlAlt: "",
-    alt: "",
-    altShift: "",
+    keyOnly: createEmptyKeyShortcut(),
+    shift: createEmptyKeyShortcut(),
+    shiftCtrl: createEmptyKeyShortcut(),
+    ctrl: createEmptyKeyShortcut(),
+    ctrlAlt: createEmptyKeyShortcut(),
+    alt: createEmptyKeyShortcut(),
+    altShift: createEmptyKeyShortcut(),
+  };
+};
+
+export const createEmptyKeyShortcut = (): KeyShortcut => {
+  return {
+    value: "",
+    isBold: false,
+    isSmall: false,
   };
 };
 
@@ -38,10 +52,10 @@ export const createEmptyCheatsheet = (): Cheatsheet => {
   return {
     keyShortcuts: [],
     description: {
-      shift: '',
-      ctrl: '',
-      alt: '',
-      notes: ''
-    }
-  }
-}
+      shift: "",
+      ctrl: "",
+      alt: "",
+      notes: "",
+    },
+  };
+};

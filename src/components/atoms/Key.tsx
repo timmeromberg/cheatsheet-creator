@@ -7,12 +7,14 @@ import {
 } from "../../domain/KeyboardLayout";
 import {
   Cheatsheet,
+  createEmptyKeyShortcut,
   createEmptyKeyShortcuts,
   KeyShortcuts,
 } from "../../domain/Cheatsheet";
 import KeyShortcut, { FontSizeType, KeyShortcutLabel } from "./KeyShortcut";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 import { AMOUNT_OF_KEY_SPACE } from "../../pages/CheatsheetPage";
+import { KeyShortcut as KeyShortcutObject } from "../../domain/Cheatsheet.ts";
 
 export interface KeyProps {
   layoutKey: LayoutKey;
@@ -42,13 +44,13 @@ const Key = ({
 
   const onSaveKeyShortcuts = (
     id: string,
-    keyOnly: string,
-    shift: string,
-    shiftCtrl: string,
-    ctrl: string,
-    ctrlAlt: string,
-    alt: string,
-    altShift: string
+    keyOnly: KeyShortcutObject,
+    shift: KeyShortcutObject,
+    shiftCtrl: KeyShortcutObject,
+    ctrl: KeyShortcutObject,
+    ctrlAlt: KeyShortcutObject,
+    alt: KeyShortcutObject,
+    altShift: KeyShortcutObject
   ) => {
     const updatedKeyShortcut: KeyShortcuts = {
       id: id,
@@ -82,15 +84,18 @@ const Key = ({
     saveCheatsheet(newCheatsheet);
   };
 
-  const hasTwoKeyShortcut =
-    keyShortcuts?.shift || keyShortcuts?.alt || keyShortcuts?.ctrl;
+  // const hasTwoKeyShortcut =
+  //   keyShortcuts?.shift || keyShortcuts?.alt || keyShortcuts?.ctrl;
 
   const determineActiveAmountOfShortcutKeys = (): number => {
     let active = 1; // always counting key only as active
-    if (hasTwoKeyShortcut) active = active + 3;
-    if (keyShortcuts?.altShift) active++;
-    if (keyShortcuts?.ctrlAlt) active++;
-    if (keyShortcuts?.shiftCtrl) active++;
+    //if (hasTwoKeyShortcut) active = active + 1;
+    if (keyShortcuts?.alt.value) active++;
+    if (keyShortcuts?.shift.value) active++;
+    if (keyShortcuts?.ctrl.value) active++;
+    if (keyShortcuts?.altShift.value) active++;
+    if (keyShortcuts?.ctrlAlt.value) active++;
+    if (keyShortcuts?.shiftCtrl.value) active++;
     return active;
   };
 
@@ -115,55 +120,59 @@ const Key = ({
       >
         <KeyShortcut
           label={layoutKey.label}
-          value={keyShortcuts?.keyOnly ? keyShortcuts.keyOnly : ""}
+          keyShortcut={
+            keyShortcuts?.keyOnly.value
+              ? keyShortcuts.keyOnly
+              : createEmptyKeyShortcut()
+          }
           size={fontSizeType}
         />
         {keyShortcuts && (
           <div className={cx(classes.keyShortcuts)}>
-            {hasTwoKeyShortcut && (
+            {keyShortcuts.shift.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.SHIFT}
-                value={keyShortcuts.shift}
+                keyShortcut={keyShortcuts.shift}
                 size={fontSizeType}
               />
             )}
 
-            {keyShortcuts.shiftCtrl && (
+            {keyShortcuts.shiftCtrl.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.SHIFT_CTRL}
-                value={keyShortcuts.shiftCtrl}
+                keyShortcut={keyShortcuts.shiftCtrl}
                 size={fontSizeType}
               />
             )}
 
-            {hasTwoKeyShortcut && (
+            {keyShortcuts.ctrl.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.CTRL}
-                value={keyShortcuts.ctrl}
+                keyShortcut={keyShortcuts.ctrl}
                 size={fontSizeType}
               />
             )}
 
-            {keyShortcuts.ctrlAlt && (
+            {keyShortcuts.ctrlAlt.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.CTRL_ALT}
-                value={keyShortcuts.ctrlAlt}
+                keyShortcut={keyShortcuts.ctrlAlt}
                 size={fontSizeType}
               />
             )}
 
-            {hasTwoKeyShortcut && (
+            {keyShortcuts.alt.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.ALT}
-                value={keyShortcuts.alt}
+                keyShortcut={keyShortcuts.alt}
                 size={fontSizeType}
               />
             )}
 
-            {keyShortcuts.altShift && (
+            {keyShortcuts.altShift.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.ALT_SHIFT}
-                value={keyShortcuts.altShift}
+                keyShortcut={keyShortcuts.altShift}
                 size={fontSizeType}
               />
             )}

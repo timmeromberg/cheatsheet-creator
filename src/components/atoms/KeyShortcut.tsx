@@ -2,10 +2,11 @@ import { makeStyles } from "../../styles/theme";
 import { ColorHex } from "../../styles/colors";
 import { FontWeight } from "../../styles/fontType";
 import NewLinedSpan from "./NewLinedSpan";
+import { KeyShortcut as KeyShortcutObject } from "../../domain/Cheatsheet.ts";
 
 export interface KeyShortcutProps {
   label: KeyShortcutLabel | string;
-  value: string;
+  keyShortcut: KeyShortcutObject;
   size: FontSizeType;
 }
 
@@ -46,39 +47,57 @@ function isValueEnum(value: string): value is KeyShortcutLabel {
   return (Object.values(KeyShortcutLabel) as Array<string>).includes(value);
 }
 
-const KeyShortcut = ({ label, value, size }: KeyShortcutProps): JSX.Element => {
+const KeyShortcut = ({
+  label,
+  keyShortcut,
+  size,
+}: KeyShortcutProps): JSX.Element => {
   const isKeyOnlyShortcut = !isValueEnum(label);
+
+  if (keyShortcut.isSmall) {
+    console.log("isKeyOnlyShortcut", keyShortcut.isSmall);
+  }
 
   const { classes, cx } = useStyles({
     color: getLabelColor(label),
     isKeyOnlyShortcut: isKeyOnlyShortcut,
     size: size ? size : FontSizeType.NORMAL,
+    isBold: keyShortcut.isBold,
+    isSmall: keyShortcut.isSmall,
   });
 
   return (
     <div className={cx(classes.keyShortcut)}>
       <span className={cx(classes.keyShortcutLabel)}>{label}</span>
-      <NewLinedSpan className={cx(classes.keyShortcutValue)} value={value} />
+      <NewLinedSpan
+        className={cx(classes.keyShortcutValue)}
+        value={keyShortcut.value}
+      />
     </div>
   );
 };
 
-const determineFontSize = (
-  isKeyOnlyShortcut: boolean,
-  size: FontSizeType,
-  isLabel: boolean
-): string => {
-  if (isLabel && isKeyOnlyShortcut && size === FontSizeType.BIG) {
-    return "1vw";
-  } else if (isLabel && isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
-    return "1vw";
-  } else if (isLabel && !isKeyOnlyShortcut && size === FontSizeType.BIG) {
-    return "0.9vw";
-  } else if (isLabel && !isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
-    return "0.62vw";
-  } else if (!isLabel && size === FontSizeType.BIG) {
+const determineFontSize = (size: FontSizeType): string => {
+  if (size === FontSizeType.BIG) {
     return "0.75vw";
-  } else if (!isLabel && size === FontSizeType.NORMAL) {
+  } else if (size === FontSizeType.NORMAL) {
+    return "0.55vw";
+  } else {
+    return "0.33vw";
+  }
+};
+
+const determineLabelFontSize = (
+  isKeyOnlyShortcut: boolean,
+  size: FontSizeType
+): string => {
+  if (isKeyOnlyShortcut && size === FontSizeType.BIG) {
+    return "1vw";
+  } else if (isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
+    return "1vw";
+  } else if (!isKeyOnlyShortcut && size === FontSizeType.BIG) {
+    return "0.75vw";
+  } else if (!isKeyOnlyShortcut && size === FontSizeType.NORMAL) {
     return "0.55vw";
   } else {
     return "0.33vw";
@@ -88,8 +107,10 @@ const determineFontSize = (
 const useStyles = makeStyles<{
   color: ColorHex;
   isKeyOnlyShortcut: boolean;
+  isBold?: boolean;
+  isSmall?: boolean;
   size: FontSizeType;
-}>()((_, { color, isKeyOnlyShortcut, size }) => {
+}>()((_, { color, isKeyOnlyShortcut, size, isBold, isSmall }) => {
   return {
     keyShortcut: {
       //overflowWrap: 'break-all',
@@ -100,13 +121,16 @@ const useStyles = makeStyles<{
       color: color,
     },
     keyShortcutLabel: {
-      fontSize: determineFontSize(isKeyOnlyShortcut, size, true),
+      fontSize: determineLabelFontSize(
+        isKeyOnlyShortcut,
+        isSmall ? FontSizeType.NORMAL : size
+      ),
       fontWeight: FontWeight.BOLD,
     },
     keyShortcutValue: {
-      fontSize: determineFontSize(isKeyOnlyShortcut, size, false),
+      fontSize: determineFontSize(isSmall ? FontSizeType.NORMAL : size),
       marginTop: "0.01vw",
-      fontWeight: FontWeight.LIGHT,
+      fontWeight: isBold ? FontWeight.BOLD : FontWeight.LIGHT,
     },
   };
 });

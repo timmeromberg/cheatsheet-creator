@@ -22,7 +22,6 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   const presetColumnLength = 7;
 
   const port = window.location.port;
-  console.log("port:", port);
 
   const assetsPath =
     (port != "5175" ? "/cheatsheet/" : "") + "/assets/presets/";

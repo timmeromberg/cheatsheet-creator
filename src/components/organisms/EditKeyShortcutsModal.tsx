@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { KeyShortcuts } from "../../domain/Cheatsheet";
-import ModalLabeledInput, {
-  ModalLabeledInputSize,
-} from "../molecules/ModalLabeledInput";
+import { KeyShortcut, KeyShortcuts } from "../../domain/Cheatsheet";
 import Button, { ButtonSize } from "../atoms/Button";
 import ModalButtons from "../molecules/ModalButtons";
 import ModalForm from "../molecules/ModalForm";
@@ -11,6 +8,9 @@ import { makeStyles } from "../../styles/theme";
 import { base } from "../../styles/base";
 import { ModalKey, useModalContext } from "../../hooks/ModalProvider";
 import { FontWeight } from "../../styles/fontType";
+import KeyShortcutModalInput, {
+  ModalLabeledInputSize,
+} from "../molecules/KeyShortcutModalInput.tsx";
 
 export interface EditShortcutModalData {
   label: string;
@@ -26,13 +26,13 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   const label = data.label;
   const onSave = modalState.onSave as (
     id: string,
-    keyOnly: string,
-    shift: string,
-    shiftCtrl: string,
-    ctrl: string,
-    ctrlAlt: string,
-    alt: string,
-    altShift: string
+    keyOnly: KeyShortcut,
+    shift: KeyShortcut,
+    shiftCtrl: KeyShortcut,
+    ctrl: KeyShortcut,
+    ctrlAlt: KeyShortcut,
+    alt: KeyShortcut,
+    altShift: KeyShortcut
   ) => void;
 
   const [keyOnly, setKeyOnly] = useState(keyShortcuts.keyOnly);
@@ -42,63 +42,64 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   const [ctrlAlt, setCtrlAlt] = useState(keyShortcuts.ctrlAlt);
   const [alt, setAlt] = useState(keyShortcuts.alt);
   const [altShift, setAltShift] = useState(keyShortcuts.altShift);
+
   const { cx, classes } = useStyles();
 
   return (
     <ToolsModal modalKey={ModalKey.EDIT_SHORTCUTS_MODAL}>
       <ModalForm className={cx(classes.editShortcutsModal)}>
-        <ModalLabeledInput
+        <KeyShortcutModalInput
           label={label}
-          value={keyOnly}
-          onChange={setKeyOnly}
+          keyShortcut={keyOnly}
+          onChangeKeyShortcut={setKeyOnly}
           maxLength={43 - keyShortcuts.id.length}
           size={ModalLabeledInputSize.DOUBLE}
         />
 
         <div className={cx(classes.editShortcutsModalGrouping)}>
-          <ModalLabeledInput
+          <KeyShortcutModalInput
             label={"Shift"}
-            value={shift}
-            onChange={setShift}
+            keyShortcut={shift}
+            onChangeKeyShortcut={setShift}
             maxLength={42}
           />
-          <ModalLabeledInput
+          <KeyShortcutModalInput
             labelClassName={cx(classes.editShortcutsModalLabelThin)}
             label={"Shift + Ctrl"}
-            value={shiftCtrl}
-            onChange={setShiftCtrl}
+            keyShortcut={shiftCtrl}
+            onChangeKeyShortcut={setShiftCtrl}
             maxLength={42}
           />
         </div>
 
         <div className={cx(classes.editShortcutsModalGrouping)}>
-          <ModalLabeledInput
+          <KeyShortcutModalInput
             label={"Ctrl"}
-            value={ctrl}
-            onChange={setCtrl}
+            keyShortcut={ctrl}
+            onChangeKeyShortcut={setCtrl}
             maxLength={42}
           />
-          <ModalLabeledInput
+          <KeyShortcutModalInput
             labelClassName={cx(classes.editShortcutsModalLabelThin)}
             label={"Ctrl + Alt"}
-            value={ctrlAlt}
-            onChange={setCtrlAlt}
+            keyShortcut={ctrlAlt}
+            onChangeKeyShortcut={setCtrlAlt}
             maxLength={42}
           />
         </div>
 
         <div className={cx(classes.editShortcutsModalGrouping)}>
-          <ModalLabeledInput
+          <KeyShortcutModalInput
             label={"Alt"}
-            value={alt}
-            onChange={setAlt}
+            keyShortcut={alt}
+            onChangeKeyShortcut={setAlt}
             maxLength={42}
           />
-          <ModalLabeledInput
+          <KeyShortcutModalInput
             labelClassName={cx(classes.editShortcutsModalLabelThin)}
             label={"Alt + Shift"}
-            value={altShift}
-            onChange={setAltShift}
+            keyShortcut={altShift}
+            onChangeKeyShortcut={setAltShift}
             maxLength={42}
           />
         </div>

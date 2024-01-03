@@ -31,7 +31,6 @@ const CheatsheetPage = () => {
 
       const localDataStorage = new LocalDataStorage();
       const cheatsheet = await localDataStorage.fetchCheatsheet();
-      console.log(cheatsheet?.keyShortcuts.length == 0);
       setCheatsheet(cheatsheet);
 
       if (cheatsheet?.keyShortcuts.length == 0) {
