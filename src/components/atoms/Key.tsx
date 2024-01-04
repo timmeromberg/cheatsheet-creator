@@ -129,10 +129,10 @@ const Key = ({
         />
         {keyShortcuts && (
           <div className={cx(classes.keyShortcuts)}>
-            {keyShortcuts.shift.value && (
+            {keyShortcuts.ctrl.value && (
               <KeyShortcut
-                label={KeyShortcutLabel.SHIFT}
-                keyShortcut={keyShortcuts.shift}
+                label={KeyShortcutLabel.CTRL}
+                keyShortcut={keyShortcuts.ctrl}
                 size={fontSizeType}
               />
             )}
@@ -145,14 +145,6 @@ const Key = ({
               />
             )}
 
-            {keyShortcuts.ctrl.value && (
-              <KeyShortcut
-                label={KeyShortcutLabel.CTRL}
-                keyShortcut={keyShortcuts.ctrl}
-                size={fontSizeType}
-              />
-            )}
-
             {keyShortcuts.ctrlAlt.value && (
               <KeyShortcut
                 label={KeyShortcutLabel.CTRL_ALT}
@@ -161,10 +153,10 @@ const Key = ({
               />
             )}
 
-            {keyShortcuts.alt.value && (
+            {keyShortcuts.shift.value && (
               <KeyShortcut
-                label={KeyShortcutLabel.ALT}
-                keyShortcut={keyShortcuts.alt}
+                label={KeyShortcutLabel.SHIFT}
+                keyShortcut={keyShortcuts.shift}
                 size={fontSizeType}
               />
             )}
@@ -173,6 +165,14 @@ const Key = ({
               <KeyShortcut
                 label={KeyShortcutLabel.ALT_SHIFT}
                 keyShortcut={keyShortcuts.altShift}
+                size={fontSizeType}
+              />
+            )}
+
+            {keyShortcuts.alt.value && (
+              <KeyShortcut
+                label={KeyShortcutLabel.ALT}
+                keyShortcut={keyShortcuts.alt}
                 size={fontSizeType}
               />
             )}

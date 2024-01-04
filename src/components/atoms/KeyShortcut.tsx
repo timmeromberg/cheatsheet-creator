@@ -14,9 +14,9 @@ export enum KeyShortcutLabel {
   SHIFT = "S:",
   CTRL = "C:",
   ALT = "A:",
-  SHIFT_CTRL = "S+C:",
+  SHIFT_CTRL = "C+S:",
   CTRL_ALT = "C+A:",
-  ALT_SHIFT = "A+S:",
+  ALT_SHIFT = "S+A:",
 }
 
 export enum FontSizeType {
@@ -33,11 +33,11 @@ const getLabelColor = (label: KeyShortcutLabel | string): ColorHex => {
     case KeyShortcutLabel.ALT:
       return ColorHex.NAVY_BLUE;
     case KeyShortcutLabel.SHIFT_CTRL:
-      return ColorHex.DIM_GRAY;
+      return ColorHex.LIME_GREEN;
     case KeyShortcutLabel.CTRL_ALT:
-      return ColorHex.DIM_GRAY;
+      return ColorHex.LIME_GREEN;
     case KeyShortcutLabel.ALT_SHIFT:
-      return ColorHex.DIM_GRAY;
+      return ColorHex.MAROON;
     default:
       return ColorHex.DARK_GRAY;
   }

@@ -58,25 +58,16 @@ const EditKeyShortcutsModal = (): JSX.Element => {
 
         <div className={cx(classes.editShortcutsModalGrouping)}>
           <KeyShortcutModalInput
-            label={"Shift"}
-            keyShortcut={shift}
-            onChangeKeyShortcut={setShift}
+            label={"Ctrl"}
+            keyShortcut={ctrl}
+            onChangeKeyShortcut={setCtrl}
             maxLength={42}
           />
           <KeyShortcutModalInput
             labelClassName={cx(classes.editShortcutsModalLabelThin)}
-            label={"Shift + Ctrl"}
+            label={"Ctrl + Shift"}
             keyShortcut={shiftCtrl}
             onChangeKeyShortcut={setShiftCtrl}
-            maxLength={42}
-          />
-        </div>
-
-        <div className={cx(classes.editShortcutsModalGrouping)}>
-          <KeyShortcutModalInput
-            label={"Ctrl"}
-            keyShortcut={ctrl}
-            onChangeKeyShortcut={setCtrl}
             maxLength={42}
           />
           <KeyShortcutModalInput
@@ -90,16 +81,25 @@ const EditKeyShortcutsModal = (): JSX.Element => {
 
         <div className={cx(classes.editShortcutsModalGrouping)}>
           <KeyShortcutModalInput
-            label={"Alt"}
-            keyShortcut={alt}
-            onChangeKeyShortcut={setAlt}
+            label={"Shift"}
+            keyShortcut={shift}
+            onChangeKeyShortcut={setShift}
             maxLength={42}
           />
           <KeyShortcutModalInput
             labelClassName={cx(classes.editShortcutsModalLabelThin)}
-            label={"Alt + Shift"}
+            label={"Shift + Alt"}
             keyShortcut={altShift}
             onChangeKeyShortcut={setAltShift}
+            maxLength={42}
+          />
+        </div>
+
+        <div className={cx(classes.editShortcutsModalGrouping)}>
+          <KeyShortcutModalInput
+            label={"Alt"}
+            keyShortcut={alt}
+            onChangeKeyShortcut={setAlt}
             maxLength={42}
           />
         </div>
