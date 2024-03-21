@@ -15,10 +15,10 @@ import WindowWidthCheck from "./components/WindowWidthCheck";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/cheatsheet" />,
+    element: <Navigate to="/content/tools/keyboardcheatsheet" />,
   },
   {
-    path: "/cheatsheet",
+    path: "/content/tools/keyboardcheatsheet",
     element: <CheatsheetPage />,
   },
   {

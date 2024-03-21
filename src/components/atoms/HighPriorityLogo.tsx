@@ -12,8 +12,8 @@ const HighPriorityLogo = ({ color }: HighPriorityLogoProps) => {
 
   const src =
     color === ColorHex.WHITE
-      ? "/cheatsheet/images/HP_amber2.png"
-      : "/cheatsheet/images/HP_black2.png";
+      ? "/content/tools/keyboardcheatsheet/images/HP_amber2.png"
+      : "/content/tools/keyboardcheatsheet/images/HP_black2.png";
 
   return (
     <Link url={HIGH_PRIORITY_URL}>

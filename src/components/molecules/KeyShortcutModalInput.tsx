@@ -68,15 +68,19 @@ const KeyShortcutModalInput = ({
         tooltipText={"Smaller size"}
         value={keyShortcut.isSmall}
         onChange={onChangeIsSmall}
-        onImage={"/cheatsheet/images/Toggle_Small_On.png"}
-        offImage={"/cheatsheet/images/Toggle_Small_Off.png"}
+        onImage={"/content/tools/keyboardcheatsheet/images/Toggle_Small_On.png"}
+        offImage={
+          "/content/tools/keyboardcheatsheet/images/Toggle_Small_Off.png"
+        }
       />
       <ModalCheckboxInput
         tooltipText={"Bold"}
         value={keyShortcut.isBold}
         onChange={onChangeIsBold}
-        onImage={"/cheatsheet/images/Toggle_Bold_On.png"}
-        offImage={"/cheatsheet/images/Toggle_Bold_Off.png"}
+        onImage={"/content/tools/keyboardcheatsheet/images/Toggle_Bold_On.png"}
+        offImage={
+          "/content/tools/keyboardcheatsheet/images/Toggle_Bold_Off.png"
+        }
       />
     </div>
   );

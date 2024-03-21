@@ -6,7 +6,7 @@ import GlobPlugin from "vite-plugin-glob";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/cheatsheet/",
+  base: "/content/tools/keyboardcheatsheet/",
   plugins: [
     react(),
     checker({

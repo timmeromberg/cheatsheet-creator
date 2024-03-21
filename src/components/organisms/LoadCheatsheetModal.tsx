@@ -24,7 +24,8 @@ const EditKeyShortcutsModal = (): JSX.Element => {
   const port = window.location.port;
 
   const assetsPath =
-    (port != "5175" ? "/cheatsheet/" : "") + "/assets/presets/";
+    (port != "5175" ? "/content/tools/keyboardcheatsheet" : "") +
+    "/assets/presets/";
 
   useEffect(() => {
     const fetchPresets = async () => {
